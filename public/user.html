@@ -12,6 +12,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 </head>
 <body> -->
+    <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
+        <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+    </head>
+    
     
 <style>
     html *{
@@ -110,6 +118,7 @@ a .material-icons {
 .img-fluid, .img-thumbnail {
     max-width: 100%;
     height: auto;
+    vertical-align: left;
 }
 
 .title {
@@ -188,12 +197,8 @@ p {
 .profile-page .gallery {
     margin-top: 3.213rem;
     padding-bottom: 50px;
-}
+} 
 
-.profile-page .gallery img {
-    width: 100%;
-    margin-bottom: 2.142rem;
-}
 
 .profile-page .profile .name{
     margin-top: -80px;
@@ -252,133 +257,14 @@ img.rounded {
     color: #999;
 }
 
-/* dropdown */
-
-
-
-
-.dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1000;
-    float: left;
-    min-width: 11rem !important;
-    margin: .125rem 0 0;
-    font-size: 1rem;
-    color: #212529;
-    text-align: left;
-    background-color: #fff;
-    background-clip: padding-box;
-    border-radius: .25rem;
-    transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
-}
-
-.dropdown-menu.show{
-    transition: transform .3s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
-}
-
-
-.dropdown-menu .dropdown-item:focus, .dropdown-menu .dropdown-item:hover, .dropdown-menu a:active, .dropdown-menu a:focus, .dropdown-menu a:hover {
-    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
-    background-color: #9c27b0;
-    color: #FFF;
-}
-.show .dropdown-toggle:after {
-    transform: rotate(180deg);
-}
-
-.dropdown-toggle:after {
-    will-change: transform;
-    transition: transform .15s linear;
-}
-
-
-.dropdown-menu .dropdown-item, .dropdown-menu li>a {
-    position: relative;
-    width: auto;
-    display: flex;
-    flex-flow: nowrap;
-    align-items: center;
-    color: #333;
-    font-weight: 400;
-    text-decoration: none;
-    font-size: .8125rem;
-    border-radius: .125rem;
-    margin: 0 .3125rem;
-    transition: all .15s linear;
-    min-width: 7rem;
-    padding: 0.625rem 1.25rem;
-    min-height: 1rem !important;
-    overflow: hidden;
-    line-height: 1.428571;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-}
-
-.dropdown-menu.dropdown-with-icons .dropdown-item {
-    padding: .75rem 1.25rem .75rem .75rem;
-}
-
-.dropdown-menu.dropdown-with-icons .dropdown-item .material-icons {
-    vertical-align: middle;
-    font-size: 24px;
-    position: relative;
-    margin-top: -4px;
-    top: 1px;
-    margin-right: 12px;
-    opacity: .5;
-}
-
-.bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-}
-
-@media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-    }
-}
-
-/* footer */
-
-footer{
-    margin-top: 10px;
-    color: #555;
-    padding: 25px;
-    font-weight: 300;
-    
-}
-.footer p{
-    margin-bottom: 0;
-    font-size: 14px;
-    margin: 0 0 10px;
-    font-weight: 300;
-}
-footer p a{
-    color: #555;
-    font-weight: 400;
-}
-
-footer p a:hover {
-    color: #9f26aa;
-    text-decoration: none;
-}
+.thumbnail-size {
+            width: 100%;
+            height: 40vh; /* 30% of viewport: see: https://css-tricks.com/fun-viewport-units/ */
+            object-fit: cover;
+        }
 
 </style>
-    <head>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
-        <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
-        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
-        <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
-    </head>
-    
+
     <body class="profile-page">
         
         <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
@@ -407,19 +293,19 @@ footer p a:hover {
                               <ul class="nav nav-pills nav-pills-icons justify-content-center" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" href="#studio" role="tab" data-toggle="tab">
-                                      <i class="material-icons">camera</i>
+                                      <i class="fa fa-home"></i>
                                       Listings
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                                      <i class="material-icons">palette</i>
+                                      <i class="fa fa-user-circle-o"></i>
                                         Bio
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
-                                      <i class="material-icons">favorite</i>
+                                      <i class="fa fa-envelope-o"></i>
                                         Contact
                                     </a>
                                 </li>
@@ -434,39 +320,43 @@ footer p a:hover {
                         <div class="col-md-6">
                           <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col p-4 d-flex flex-column position-static">
-                              <strong class="d-inline-block mb-2 text-primary">World</strong>
-                              <h3 class="mb-0">Featured post</h3>
-                              <div class="mb-1 text-muted">Nov 12</div>
-                              <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                              <a href="#" class="stretched-link">Continue reading</a>
+                              <h3 class="mb-0">2 Bedroom Apartment, Entertainment District</h3>
+                              <div class="mb-1 text-muted">Listed: Nov 12</div>
+                                <a style="text-align:left;"><i class="fa fa-bed"></i>: 2</a>
+                                <a style="text-align:left;"><i class="fa fa-bath"></i>: 2</a>
+                                <a style="text-align:left;"><i class="fa fa-map-marker"></i>: Toronto</a>
+                                <br>
+                                <p class="card-text mb-auto">Beautiful 2 bedroom, 2 bathroom apt right in the heart of Toronto.</p>
+                                <br>
+                                <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
                             </div>
-                            <div class="col-auto d-none d-lg-block">
-                              <img class="bd-placeholder-img" width="200" height="250" src="https://www.narcity.com/uploads/265664_0a377ae85d7c781f5b778f9eb647bf83982cf3b2.jpg_facebook.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <div class="col-12">
+                                <img src="https://www.narcity.com/uploads/265664_0a377ae85d7c781f5b778f9eb647bf83982cf3b2.jpg_facebook.jpg" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
                             </div>
                           </div>
                         </div>
                         <div class="col-md-6">
                             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                               <div class="col p-4 d-flex flex-column position-static">
-                                <strong class="d-inline-block mb-2 text-primary">World</strong>
-                                <h3 class="mb-0">Featured post</h3>
-                                <div class="mb-1 text-muted">Nov 12</div>
-                                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                <a href="#" class="stretched-link">Continue reading</a>
+                                <h3 class="mb-0">2 Bedroom Apartment, Entertainment District</h3>
+                                <div class="mb-1 text-muted">Listed: Nov 12</div>
+                                  <a style="text-align:left;"><i class="fa fa-bed"></i>: 2</a>
+                                  <a style="text-align:left;"><i class="fa fa-bath"></i>: 2</a>
+                                  <a style="text-align:left;"><i class="fa fa-map-marker"></i>: Toronto</a>
+                                  <br>
+                                  <p class="card-text mb-auto">Beautiful 2 bedroom, 2 bathroom apt right in the heart of Toronto.</p>
+                                  <br>
+                                  <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
                               </div>
-                              <div class="col-auto d-none d-lg-block">
-                                <img class="bd-placeholder-img" width="200" height="250" src="https://g5-assets-cld-res.cloudinary.com/image/upload/q_auto,f_auto,fl_lossy/v1546721532/g5/g5-c-5cpnmi9wp-quadreal/g5-cl-1hj4qag6gj-bretton-place/uploads/Bretton_Place_Kitchen_Dining_staged_110618_hrf09r.jpg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                              <div class="col-12">
+                                  <img src="https://g5-assets-cld-res.cloudinary.com/image/upload/q_auto,f_auto,fl_lossy/v1546721532/g5/g5-c-5cpnmi9wp-quadreal/g5-cl-1hj4qag6gj-bretton-place/uploads/Bretton_Place_Kitchen_Dining_staged_110618_hrf09r.jpg" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
                               </div>
                             </div>
                         </div>
-   
                 </div>
             </div>
         </div>
         
-        <footer class="footer text-center ">
-            <p>Made with <a href="https://demos.creative-tim.com/material-kit/index.html" target="_blank">Material Kit</a> by Creative Tim</p>
-        </footer>
       
         <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
