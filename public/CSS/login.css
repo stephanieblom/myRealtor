@@ -1,7 +1,7 @@
 .header {
     width: 100%;
     height: 100px;
-    background-image: url('/Users/koustubmanchiraju/Documents/BootCamp/Project-2/Assets/Images/ManOfSteel.jpg');
+    background-image: url('../../Assets/Images/ManOfSteel.jpg');
 }
 body {
     font-family: 'Montserrat', sans-serif;
@@ -36,8 +36,11 @@ body {
     float: right;   
 }
 .aboutPage{
-float: left;
-width: 50%;
+    float: left;
+    width: 50%;
+    }
+.signIn {
+    margin-top: 25px;
 }
 
 
@@ -76,6 +79,7 @@ and (max-device-width : 480px) {
         height: 4vh;
         font-size: small;
     }
+
 
 }
 @media only screen 

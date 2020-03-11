@@ -2,13 +2,11 @@
     font-family: 'Montserrat', sans-serif;
     color:whitesmoke;
 }
-header 
-{
+header {
 height:50vh;
 min-height:400px;
 background-size:cover;
-background-image:url('/Users/koustubmanchiraju/Documents/BootCamp/Project-2/Assets/Images/ManOfSteel.jpg');
-
+background-image:url('../../Assets/Images/ManOfSteel.jpg');
 }
 .navbarHeader{
 display: flex;
