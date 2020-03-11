@@ -1,9 +1,10 @@
 .header {
     width: 100%;
     height: 100px;
-    background-image: url('ManOfSteel.jpg');
+    background-image: url('/Users/koustubmanchiraju/Documents/BootCamp/Project-2/Assets/Images/ManOfSteel.jpg');
 }
 body {
+    font-family: 'Montserrat', sans-serif;
     background-color: rgb(238, 238, 238);
 }
 .title{
