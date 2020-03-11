@@ -1,9 +1,10 @@
 .header {
     width: 100%;
     height: 100px;
-    background-image: url('ManOfSteel.jpg');
+    background-image: url('/Users/koustubmanchiraju/Documents/BootCamp/Project-2/Assets/Images/ManOfSteel.jpg');
 }
 body {
+    font-family: 'Montserrat', sans-serif;
     background-color: rgb(238, 238, 238);
 }
 .title{
@@ -43,26 +44,38 @@ width: 50%;
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 480px) {
-body{
-font-size: small;
-}
-.signIn{
-margin-top: 10px;
-}
-.title {
-padding-top: 1%;
-padding: 5px;
-}
-.userSignUp {
-display: block;
-margin: auto;
-margin-top: 15px;
-width: 100%;
-}
+    body{
+        font-size: small;
+    }
+    .signIn{
+        margin-top: 10px;
+        width: 70%;
+    }
+    .title {
+        padding-top: 1%;
+        padding: 5px;
+    }
+    .userSignUp {
+        display: block;
+        margin: auto;
+        margin-top: 15px;
+        width: 100%;
+    }
 
-.user-control {
-height: 4vh;
-}
+    .user-control {
+        font-size: small;
+        height: 4vh;
+        padding:0%;
+    }
+    .loginBtn {
+        width: 30%;
+        float: left;
+        margin-left: 10px;
+    }
+    .login-Btn{
+        height: 4vh;
+        font-size: small;
+    }
 
 }
 @media only screen 
