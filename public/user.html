@@ -1,272 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
-
-      Latest compiled and minified CSS -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-</head>
-<body> -->
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Profile</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
         <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css" integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons">
         <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="user.css">
     </head>
-    
-    
-<style>
-    html *{
-    -webkit-font-smoothing: antialiased;
-}
-
-.h6, h6 {
-    font-size: .75rem !important;
-    font-weight: 500;
-    font-family: Roboto,Helvetica,Arial,sans-serif;
-    line-height: 1.5em;
-    text-transform: uppercase;
-}
-
-.name h6 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-a .material-icons {
-    vertical-align: middle;
-}
-
-.fixed-top {
-    position: fixed;
-    z-index: 1030;
-    left: 0;
-    right: 0;
-}
-
-.profile-page .page-header {
-    height: 380px;
-    background-position:center;
-}
-
-.page-header {
-    height: 100vh;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    display: flex;
-    align-items: center;
-}
-
-.header-filter:after, .header-filter:before {
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    display: block;
-    left: 0;
-    top: 0;
-    content: "";
-}
-
-.header-filter::before {
-    background: rgba(0,0,0,.5);
-}
-
-.main-raised {
-    margin: -60px 30px 0;
-    border-radius: 6px;
-    box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
-}
-
-.main {
-    background: #FFF;
-    position: relative;
-    z-index: 3;
-}
-
-.profile-page .profile {
-    text-align: center;
-}
-
-.profile-page .profile img {
-    max-width: 160px;
-    width: 100%;
-    margin: 0 auto;
-    -webkit-transform: translate3d(0,-50%,0);
-    -moz-transform: translate3d(0,-50%,0);
-    -o-transform: translate3d(0,-50%,0);
-    -ms-transform: translate3d(0,-50%,0);
-    transform: translate3d(0,-50%,0);
-}
-
-.img-raised {
-    box-shadow: 0 5px 15px -8px rgba(0,0,0,.24), 0 8px 10px -5px rgba(0,0,0,.2);
-}
-
-.rounded-circle {
-    border-radius: 50%!important;
-}
-
-.img-fluid, .img-thumbnail {
-    max-width: 100%;
-    height: auto;
-    vertical-align: left;
-}
-
-.title {
-    margin-top: 30px;
-    margin-bottom: 25px;
-    min-height: 32px;
-    color: #3C4858;
-    font-weight: 700;
-    font-family: "Roboto Slab","Times New Roman",serif;
-}
-
-.profile-page .description {
-    margin: 1.071rem auto 0;
-    max-width: 600px;
-    color: #999;
-    font-weight: 300;
-}
-
-p {
-    font-size: 14px;
-    margin: 0 0 10px;
-}
-
-.profile-page .profile-tabs {
-    margin-top: 4.284rem;
-}
-
-.nav-pills, .nav-tabs {
-    border: 0;
-    border-radius: 3px;
-    padding: 0 15px;
-}
-
-.nav .nav-item {
-    position: relative;
-    margin: 0 2px;
-}
-
-.nav-pills.nav-pills-icons .nav-item .nav-link {
-    border-radius: 4px;
-}
-
-.nav-pills .nav-item .nav-link.active {
-    color: #fff;
-    background-color: #9c27b0;
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
-}
-
-.nav-pills .nav-item .nav-link {
-    line-height: 24px;
-    font-size: 12px;
-    font-weight: 500;
-    min-width: 100px;
-    color: #555;
-    transition: all .3s;
-    border-radius: 30px;
-    padding: 10px 15px;
-    text-align: center;
-}
-
-.nav-pills .nav-item .nav-link:not(.active):hover {
-    background-color: rgba(200,200,200,.2);
-}
-
-
-.nav-pills .nav-item i {
-    display: block;
-    font-size: 30px;
-    padding: 15px 0;
-}
-
-.tab-space {
-    padding: 20px 0 50px;
-}
-
-.profile-page .gallery {
-    margin-top: 3.213rem;
-    padding-bottom: 50px;
-} 
-
-
-.profile-page .profile .name{
-    margin-top: -80px;
-}
-
-img.rounded {
-    border-radius: 6px!important;
-}
-
-.tab-content>.active {
-    display: block;
-}
-
-/*buttons*/
-.btn {
-    position: relative;
-    padding: 12px 30px;
-    margin: .3125rem 1px;
-    font-size: .75rem;
-    font-weight: 400;
-    line-height: 1.428571;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0;
-    border: 0;
-    border-radius: .2rem;
-    outline: 0;
-    transition: box-shadow .2s cubic-bezier(.4,0,1,1),background-color .2s cubic-bezier(.4,0,.2,1);
-    will-change: box-shadow,transform;
-}
-
-.btn.btn-just-icon {
-    font-size: 20px;
-    height: 41px;
-    min-width: 41px;
-    width: 41px;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-    line-height: 41px;
-}
-
-.btn.btn-just-icon fa{
-    margin-top: 0;
-    position: absolute;
-    width: 100%;
-    transform: none;
-    left: 0;
-    top: 0;
-    height: 100%;
-    line-height: 41px;
-    font-size: 20px;
-}
-.btn.btn-link{
-    background-color: transparent;
-    color: #999;
-}
-
-.thumbnail-size {
-            width: 100%;
-            height: 40vh; /* 30% of viewport: see: https://css-tricks.com/fun-viewport-units/ */
-            object-fit: cover;
-        }
-
-</style>
-
     <body class="profile-page">
-        
         <div class="page-header header-filter" data-parallax="true" style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');"></div>
         <div class="main main-raised">
             <div class="profile-content">
@@ -298,12 +44,6 @@ img.rounded {
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#works" role="tab" data-toggle="tab">
-                                      <i class="fa fa-user-circle-o"></i>
-                                        Bio
-                                    </a>
-                                </li>
-                                <li class="nav-item">
                                     <a class="nav-link" href="#favorite" role="tab" data-toggle="tab">
                                       <i class="fa fa-envelope-o"></i>
                                         Contact
@@ -317,7 +57,7 @@ img.rounded {
               <div class="tab-content tab-space">
                 <div class="tab-pane active text-center gallery" id="studio">
                       <div class="row mb-2">
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-12">
                           <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                             <div class="col p-4 d-flex flex-column position-static">
                               <h3 class="mb-0">2 Bedroom Apartment, Entertainment District</h3>
@@ -335,7 +75,7 @@ img.rounded {
                             </div>
                           </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 col-12">
                             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                               <div class="col p-4 d-flex flex-column position-static">
                                 <h3 class="mb-0">2 Bedroom Apartment, Entertainment District</h3>
@@ -354,6 +94,82 @@ img.rounded {
                             </div>
                         </div>
                 </div>
+                <div class="tab-content tab-space">
+                    <div class="tab-pane active text-center gallery" id="studio">
+                          <div class="row mb-2">
+                            <div class="col-md-6">
+                              <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                <div class="col p-4 d-flex flex-column position-static">
+                                  <h3 class="mb-0">2 Bedroom Apartment, Entertainment District</h3>
+                                  <div class="mb-1 text-muted">Listed: Nov 12</div>
+                                    <a style="text-align:left;"><i class="fa fa-bed"></i>: 2</a>
+                                    <a style="text-align:left;"><i class="fa fa-bath"></i>: 2</a>
+                                    <a style="text-align:left;"><i class="fa fa-map-marker"></i>: Toronto</a>
+                                    <br>
+                                    <p class="card-text mb-auto">Beautiful 2 bedroom, 2 bathroom apt right in the heart of Toronto.</p>
+                                    <br>
+                                    <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
+                                </div>
+                                <div class="col-12">
+                                    <img src="https://www.narcity.com/uploads/265664_0a377ae85d7c781f5b778f9eb647bf83982cf3b2.jpg_facebook.jpg" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
+                                </div>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                                  <div class="col p-4 d-flex flex-column position-static">
+                                    <h3 class="mb-0">2 Bedroom Apartment, Entertainment District</h3>
+                                    <div class="mb-1 text-muted">Listed: Nov 12</div>
+                                      <a style="text-align:left;"><i class="fa fa-bed"></i>: 2</a>
+                                      <a style="text-align:left;"><i class="fa fa-bath"></i>: 2</a>
+                                      <a style="text-align:left;"><i class="fa fa-map-marker"></i>: Toronto</a>
+                                      <br>
+                                      <p class="card-text mb-auto">Beautiful 2 bedroom, 2 bathroom apt right in the heart of Toronto.</p>
+                                      <br>
+                                      <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
+                                  </div>
+                                  <div class="col-12">
+                                      <img src="https://g5-assets-cld-res.cloudinary.com/image/upload/q_auto,f_auto,fl_lossy/v1546721532/g5/g5-c-5cpnmi9wp-quadreal/g5-cl-1hj4qag6gj-bretton-place/uploads/Bretton_Place_Kitchen_Dining_staged_110618_hrf09r.jpg" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
+                                  </div>
+                                </div>
+                            </div>
+                    </div>
+                    <!-- <div class="container-contact1"> -->
+                    <div class="tab-content tab-space">
+                        <div class="row mb-2">
+                            <div class="col-md-6 col-12">
+                                <div class="contact1-pic js-tilt" data-tilt style="margin-top: 50px;">
+                                    <img src="assets/img-01.png" alt="IMG">
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <form class="contact1-form validate-form">
+                                    <span class="contact1-form-title">Get in touch</span>
+                                    <div class="wrap-input1 validate-input" data-validate="Name is required">
+                                        <input class="input1" type="text" name="name" placeholder="Name">
+                                        <span class="shadow-input1"></span>
+                                    </div>
+                                    <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                                        <input class="input1" type="text" name="email" placeholder="Email">
+                                        <span class="shadow-input1"></span>
+                                    </div>
+                                    <div class="wrap-input1 validate-input" data-validate="Subject is required">
+                                        <input class="input1" type="text" name="subject" placeholder="Subject">
+                                        <span class="shadow-input1"></span>
+                                    </div>
+                                    <div class="wrap-input1 validate-input" data-validate="Message is required">
+                                        <textarea class="input1" name="message" placeholder="Message"></textarea>
+                                        <span class="shadow-input1"></span>
+                                    </div>
+                                    <div class="container-contact1-form-btn">
+                                        <button class="contact1-form-btn">
+                                        <span>Send Email<i class="fa fa-long-arrow-right" aria-hidden="true"></i></span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
         
