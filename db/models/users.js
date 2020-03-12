@@ -11,8 +11,8 @@ let users = new Schema ({
    userPassword :  { type: String, required: true, trim: true },
    // favourites: [{
    //    thumbId: mongoose.Types.ObjectId,
-   //    favouriteTime: {type: Date, default: Date.now} }]
-   favourites: [ mongoose.Types.ObjectId ]
+//    //    favouriteTime: {type: Date, default: Date.now} }]
+//    listings: [ mongoose.Types.ObjectId ]
 } );
 
 module.exports = mongoose.model('users', users);
