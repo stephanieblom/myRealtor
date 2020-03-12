@@ -43,7 +43,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="login.html" style="color: white;">Login</a>
                     </li>
+                    
                 </ul>
+                <button class="btn btn-outline-light">Try For Free</button>
             </div>
         </nav>
     </header>
@@ -94,28 +96,28 @@
                     <h2 style="text-align: center;color: black;">Fill the Form For Information</h2>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="inputCity" placeholder="Enter City ">
-                    </div>
-                    <div class="form-group col-md-3">
-                        <select id="inputState" class="form-control">
-                            <option selected>State</option>
-                            <option>...</option>
-                        </select>
-                    </div>
+                        <div class="form-group col-md-3">
+                                <input type="text" class="form-control" id="inputCity" placeholder="Enter City ">
+                            </div>
+                            <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" id="inputState" placeholder="Enter State-Code ">
+                            </div>
+                            <div class="form-group col-md-3">
+                                    <input type="text" class="form-control" id="inputCountry" placeholder="Enter Country ">
+                            </div>
                     <div class="form-group col-md-3">
                         <input type="text" class="form-control" id="inputZip" placeholder="Postal-Code">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        <input type="text" class="form-control" id="inputCity" placeholder="Price-min">
+                        <input type="text" class="form-control" id="inputMinPrice" placeholder="Price-min">
                     </div>
                     <div class="form-group col-md-3">
-                        <input type="text" class="form-control" id="inputCity" placeholder="Price-max">
+                        <input type="text" class="form-control" id="inputMaxPrice" placeholder="Price-max">
                     </div>
                     <div class="form-group col-md-3">
-                        <select id="inputState" class="form-control">
+                        <select id="inputBeds" class="form-control">
                             <option selected>Beds</option>
                             <option>1</option>
                             <option>2</option>
@@ -125,7 +127,7 @@
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <select id="inputState" class="form-control">
+                        <select id="inputBath" class="form-control">
                             <option selected>Bath</option>
                             <option>1</option>
                             <option>2</option>
@@ -135,7 +137,7 @@
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-light" type="button" id="searchbtn">Search</button>
+                <button class="btn btn-light" type="button" id="searchbtn" onclick="displayRentals()">Search</button>
             </form>
         </div>
     </div>
@@ -147,28 +149,29 @@
                     <h2 style="text-align: center;color: black;">Fill the Form For Information</h2>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <input type="text" class="form-control" id="inputCity" placeholder="Enter City ">
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" id="inputCity2" placeholder="Enter City ">
                     </div>
                     <div class="form-group col-md-3">
-                        <select id="inputState" class="form-control">
-                            <option selected>State</option>
-                            <option>...</option>
-                        </select>
+                            <input type="text" class="form-control" id="inputState2" placeholder="Enter State-Code ">
                     </div>
                     <div class="form-group col-md-3">
-                        <input type="text" class="form-control" id="inputZip" placeholder="Postal-Code">
+                            <input type="text" class="form-control" id="inputCountry2" placeholder="Enter Country ">
+                    </div>
+                   
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" id="inputZip2" placeholder="Postal-Code">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-3">
-                        <input type="text" class="form-control" id="inputCity" placeholder="Price-min">
+                        <input type="text" class="form-control" id="inputMinPrice2" placeholder="Price-min">
                     </div>
                     <div class="form-group col-md-3">
-                        <input type="text" class="form-control" id="inputCity" placeholder="Price-max">
+                        <input type="text" class="form-control" id="inputMaxPrice2" placeholder="Price-max">
                     </div>
                     <div class="form-group col-md-3">
-                        <select id="inputState" class="form-control">
+                        <select id="inputBeds2" class="form-control">
                             <option selected>Beds</option>
                             <option>1</option>
                             <option>2</option>
@@ -178,7 +181,7 @@
                         </select>
                     </div>
                     <div class="form-group col-md-3">
-                        <select id="inputState" class="form-control">
+                        <select id="inputBath2" class="form-control">
                             <option selected>Bath</option>
                             <option>1</option>
                             <option>2</option>
@@ -188,54 +191,19 @@
                         </select>
                     </div>
                 </div>
-                <button class="btn btn-light" type="button" id="searchbtn">Search</button>
+                <button class="btn btn-light" type="button" id="searchbtn2" onclick="displaySales()">Search</button>
             </form>
         </div>
     </div>
     <div class="card" style="width: 78vw;text-align: center;margin-left: auto; margin-right: auto;" id="displaySample">
         <div class="card-header" style="color: black;">Latest Listing of Rentals & Sales</div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header" style="color: black;">1272 Yonge St</div>
-                        <div class="card-body text-dark">
-                            <img src="https://cdn.torontolife.com/wp-content/uploads/2018/09/yannick-bisson-house-for-sale-1-803x603.jpg"
-                                style='width:100%;height:auto;' alt="">
-
-                            <h5 class="card-title" style="color: black;">Dark card title</h5>
-                            <p class="card-text" style="color: black;">Some quick example text to build on the card
-                                title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
+            <div class="row" id="lists">
+                <div class="col-md-4" id="card1">
                 </div>
-                <div class="col-md-4">
-                    <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header" style="color: black;">130 King St wt</div>
-                        <div class="card-body text-dark">
-                            <img src="https://cdn.torontolife.com/wp-content/uploads/2018/09/yannick-bisson-house-for-sale-1-803x603.jpg"
-                                style='width:100%;height:auto;' alt="">
-
-                            <h5 class="card-title" style="color: black;">Dark card title</h5>
-                            <p class="card-text" style="color: black;">Some quick example text to build on the card
-                                title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
+                <div class="col-md-4" id="card2">
                 </div>
-                <div class="col-md-4">
-                    <div class="card border-dark mb-3" style="max-width: 18rem;">
-                        <div class="card-header" style="color: black;">235 health st wt</div>
-                        <div class="card-body text-dark">
-                            <img src="https://cdn.torontolife.com/wp-content/uploads/2018/09/yannick-bisson-house-for-sale-1-803x603.jpg"
-                                style='width:100%;height:auto;' alt="">
-                            <h5 class="card-title" style="color: black;">Dark card title</h5>
-                            <p class="card-text" style="color: black;">Some quick example text to build on the card
-                                title and make up the bulk
-                                of the card's content.</p>
-                        </div>
-                    </div>
+                <div class="col-md-4" id="card3">
                 </div>
             </div>
         </div>
@@ -256,59 +224,11 @@
             By Koustub Manchiraju
         </div>
     </div>
-    <script>
-        function opennav() {
-          document.getElementById('main').innerHTML = ``;
-          document.getElementById('main').innerHTML = `
-          <button onclick='closenav()'><i class="fas fa-arrow-circle-right fa-2x"></i></button>
-          <ul id='sidebarList'>
-            <li>
-                <a class="nav-link" href="#" style="color: white;">Home</a>
-            </li>
-            <li>
-                <a class="nav-link" href="#" style="color: white;">Search</a>
-            </li>
-            <li>
-                <a class="nav-link" href="#" style="color: white;">View-List</a>
-            </li>
-            <li>
-                <a class="nav-link" href="#" style="color: white;">Login</a>
-            </li>
-        </ul>`;}
-        function closenav(){
-          document.getElementById('main').innerHTML = `
-          <nav class="navbar navbar-expand-sm  navbar-light">
-            <h2>MyREALTOR</h2>
-            <button class="navbar-toggler" type="button"
-                style="color: white;" onclick="opennav()">
-                <span>
-                    <i class="fa fa-bars" style="color:#fff; font-size: 25px; "></i>
-                </span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbar1">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white;">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white;">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white;">View-List</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white;">Login</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-          `;
-        }
-
-    </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./JS/index.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
