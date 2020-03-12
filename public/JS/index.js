@@ -160,17 +160,17 @@ function displayRentals() {
 
         for (let i = 0; i < response3.listings.length; i++) {
             document.getElementById('rentals').innerHTML += `
-            <div class="col-sm-6 col-md-3 col-lg-3 card" style='margin:6px;'>
-                <h5 class="text-uppercase title"style='color:black;'>${response3.listings[i].address}</h5>
-                <img src="${response3.listings[i].photo}" class="img-fluid" >
-                <ul style="list-style-type:none;text-align:left;">
-                    <li style='color:black;'><i class="fas fa-home" style='color:black;'></i>: ${response3.listings[i].prop_type}<li>
-                    <li style='color:black;'><i class="fas fa-usd" style='color:black;'></i>: ${response3.listings[i].price}<li>
-                    <li style='color:black;'><i class="fas fa-bed" style='color:black;'></i>: ${response3.listings[i].beds}<li>
-                    <li style='color:black;'><i class="fas fa-bath" style='color:black;'></i>: ${response3.listings[i].baths}<li>
-                </ul>
-                <button class='btn btn-light' style='text-align:right;' onclick='saveListing()' id='buttonbookmark'><i class="far fa-bookmark" style='color:black;'></i></button>
-            </div> 
+            <div class="col-sm-6 col-md-3 col-lg-3 card" id=h${i} style='margin:6px;'>
+            <h5 class="text-uppercase title" id='title${i}' style='color:black;'>${response3.listings[i].address}</h5>
+            <img src="${response3.listings[i].photo}" id='photo${i}' class="img-fluid" >
+            <ul style="list-style-type:none;text-align:left;">
+                <li style='color:black;' id='type${i}'><i class="fas fa-home" style='color:black;'></i> ${response3.listings[i].prop_type}<li>
+                <li style='color:black;' id='price${i}'><i class="fas fa-usd" style='color:black;'></i> ${response3.listings[i].price}<li>
+                <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
+                <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
+            </ul>
+            <button class='btn btn-light' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+        </div> 
     
     `;
         }
