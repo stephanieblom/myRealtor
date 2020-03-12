@@ -1,6 +1,7 @@
 const sgMail = require('@sendgrid/mail');
 const express = require( "express" );
 const bodyParser = require('body-parser')
+const orm = require( './db/orm' );
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -19,7 +20,15 @@ app.post( '/api/email', function( req, res ){
     res.send( { message: `sent email to: ${req.body.to}` } );
 })
 
+app.post( '/api/createUser', async function ( req, res ){
+    const newUser = req.body;
+    console.log('Received New User: ', newUser.firstName )
+    const mongoResonse = await orm.saveUser( req.body );
+    console.log( mongoResonse );
+    res.send ( {message: 'user received! thx babe'})
+})
 
 app.listen( PORT, function(){
     console.log( `RUNNING, http://localhost:${PORT}` );
-});
+
+ });

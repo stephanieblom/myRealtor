@@ -1,4 +1,4 @@
-function addUser( event ) {
+async function addUser( event ) {
             
     event.preventDefault();
 
@@ -28,16 +28,22 @@ function addUser( event ) {
         toastr.error( 'Passwords Do Not Match :(' )
     } else {
         console.log( 'new user: ', newUser );
-        $('#signInEmail').val('');
-        $('#signInPassword').val('');
-        $('#inputFirstName').val('');
-        $('#inputLastName').val('');
-        $('#inputMobile').val('');
-        $('#inputCity').val('');
-        $('#inputCompany').val('');
-        $('#inputEmail').val('');
-        $('#inputPassword').val('');
-        $('#inputPassword2').val('');
+        const sendInfo = await $.post( '/api/createUser', newUser );
+        toastr.success( `User Created: ${newUser.firstName} ${newUser.lastName}` );
+        clearValues();
     }
 };
 $('#signUp-Btn').on('click', addUser );
+
+function clearValues() {
+    $('#signInEmail').val('');
+    $('#signInPassword').val('');
+    $('#inputFirstName').val('');
+    $('#inputLastName').val('');
+    $('#inputMobile').val('');
+    $('#inputCity').val('');
+    $('#inputCompany').val('');
+    $('#inputEmail').val('');
+    $('#inputPassword').val('');
+    $('#inputPassword2').val('');
+}

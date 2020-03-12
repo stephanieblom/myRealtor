@@ -20,9 +20,14 @@
   "dependencies": {
     "@sendgrid/mail": "^6.5.4",
     "bcrypt": "^4.0.1",
+<<<<<<< HEAD
     "body-parser": "^1.19.0",
+=======
+    "dotenv": "^8.2.0",
+>>>>>>> ac8861e418ee073eeb505f0c2498992460e181a9
     "express": "^4.17.1",
     "mongoose": "^5.9.4",
+    "npm": "^6.14.2",
     "unirest": "^0.6.0"
   },
   "devDependencies": {}
