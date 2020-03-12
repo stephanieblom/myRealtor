@@ -31,7 +31,24 @@ app.post( '/api/createUser', async function ( req, res ){
     const mongoResonse = await orm.saveUser( req.body );
     console.log( mongoResonse );
     res.send ( {message: 'user received! thx babe'})
+});
+
+app.post( '/api/checkCredentials', async function ( req, res ) {
+    const email = req.body.email;
+    const pass = req.body.password;
+    console.log(`receiving sign in credentials: email- ${email}, password- ${pass}`);
+    const mongoResponse = await orm.checkUserCredentials ( email, pass );
+    await console.log( 'response: ', mongoResponse );
+    // const user = mongoResponse.emailAddress;
+    // const iend = user.indexOf("@");
+    // const userName = user.substring(0 , iend);
+    // console.log( userName ); 
+
+    // const getByUsername = await orm.getUserData( userName );
+    // console.log( getByUsername )
+    res.send( mongoResponse );
 })
+
 
 app.listen( PORT, function(){
     console.log( `RUNNING, http://localhost:${PORT}` );
