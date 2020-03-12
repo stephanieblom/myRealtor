@@ -1,3 +1,50 @@
+
+function scrollToContactForm(){
+    $('html,body').animate({
+        scrollTop: $("#contact-form").offset().top- $(window).height()/7},
+        'slow');
+}
+function scrollToTop(){
+    $('html,body').animate({
+        scrollTop: $("#main").offset().top},
+        'slow');
+}
+
+async function sendEmail(){
+    event.preventDefault();
+
+    const msg = {
+        to: $("#senderEmail").val(), //Will be changed to user email upon database integration
+        from: $("#senderEmail").val(),
+        subject: $("#emailSubject").val(),
+        text: $("#emailBody").val(),
+        html: $("#emailBody").val(),
+      };
+
+      console.log(`Sending email to: ${msg.to}`)
+    
+    const apiResult = await $.post( '/api/email', msg );
+    
+    if( apiResult.message ){
+        console.log( `Successfully sent email!`);
+    
+        // clear form.
+        $('#senderName').val( "" );
+        $('#senderEmail').val( "" );
+        $('#emailSubject').val( "" );
+        $('#emailBody').val( "" );
+    
+    }
+}
+
+$(document).ready( function(){
+
+    $("#contact").on('click', scrollToContactForm);
+    $(".contact1-form-btn").on('click', scrollToTop);
+    $(".contact1-form-btn").on('click', sendEmail);
+
+});
+
 (function ($) {
     "use strict";
 
@@ -59,3 +106,4 @@
     
 
 })(jQuery);
+
