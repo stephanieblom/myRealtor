@@ -6,7 +6,7 @@ html *{
 body{
     height: 100vh;
     background-size: cover;
-    margin: 0;
+    margin: 0 -1px 0 0;
     padding: 0;
     border: 0;
 }
@@ -32,6 +32,10 @@ a .material-icons {
     z-index: 1030;
     left: 0;
     right: 0;
+}
+
+.profile-page{
+  background-size: cover;
 }
 
 .profile-page .page-header {
@@ -82,7 +86,7 @@ a .material-icons {
 
 .profile-page .profile img {
     max-width: 160px;
-    width: 100%;
+    width: 100vw;
     margin: 0 auto;
     -webkit-transform: translate3d(0,-50%,0);
     -moz-transform: translate3d(0,-50%,0);

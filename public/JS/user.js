@@ -1,3 +1,23 @@
+async function render(){
+
+    const userName = location.hash.substr(1);
+    const userData = await $.get(`/api/user/${userName}`)
+
+    let firstName = userData.firstName;
+    let lastName = userData.lastName;
+    let mobile = userData.mobile;
+    let city = userData.city;
+    let company = userData.company;
+    let emailAddress = userData.emailAddress;
+
+    $('#userName').append(`${firstName} ${lastName}`);
+    $('#userCompany').append(`${company}`);
+    $('#userLocation').append(`${city}`);
+    $('#userMobile').append(`${mobile}`);
+
+}
+
+
 
 function scrollToContactForm(){
     $('html,body').animate({
@@ -14,7 +34,7 @@ async function sendEmail(){
     event.preventDefault();
 
     const msg = {
-        to: $("#senderEmail").val(), //Will be changed to user email upon database integration
+        to: emailAddress,
         from: $("#senderEmail").val(),
         subject: $("#emailSubject").val(),
         text: $("#emailBody").val(),
@@ -37,13 +57,10 @@ async function sendEmail(){
     }
 }
 
-$(document).ready( function(){
+$("#contact").on('click', scrollToContactForm);
+$(".contact1-form-btn").on('click', scrollToTop);
+$(".contact1-form-btn").on('click', sendEmail);
 
-    $("#contact").on('click', scrollToContactForm);
-    $(".contact1-form-btn").on('click', scrollToTop);
-    $(".contact1-form-btn").on('click', sendEmail);
-
-});
 
 (function ($) {
     "use strict";
@@ -107,3 +124,6 @@ $(document).ready( function(){
 
 })(jQuery);
 
+$(document).ready( function(){
+    render();
+});
