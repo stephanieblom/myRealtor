@@ -111,7 +111,6 @@ a .material-icons {
     min-height: 32px;
     color: #3C4858;
     font-weight: 700;
-    /* font-family: "Roboto Slab","Times New Roman",serif; */
 }
 
 .profile-page .description {
@@ -243,7 +242,7 @@ img.rounded {
 
 .thumbnail-size {
             width: 100%;
-            height: 40vh; /* 30% of viewport: see: https://css-tricks.com/fun-viewport-units/ */
+            height: 40vh; 
             object-fit: cover;
 }
 
