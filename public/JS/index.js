@@ -59,7 +59,7 @@ var forSale = {
 
 $.ajax(forSale).done(async function (response) {
     console.log(response);
-    document.getElementById('card3').innerHTML = `<div class="card border-dark mb-3" style="max-width: 18rem;">
+    document.getElementById('card3').innerHTML = await `<div class="card border-dark mb-3" style="max-width: 18rem;">
     <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[0].address}</div>
     <div class="card-body text-dark">
         <img class='img-fluid' src='${response.listings[0].photo}' style='width:100%;height:auto;' alt="" id="plotImage">
@@ -86,7 +86,7 @@ var forRent = {
 
 $.ajax(forRent).done(async function (response) {
     console.log(response);
-    document.getElementById('card1').innerHTML = `<div class="card border-dark mb-3" style="max-width: 18rem;">
+    document.getElementById('card1').innerHTML =  await `<div class="card border-dark mb-3" style="max-width: 18rem;">
     <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[3].address}</div>
     <div class="card-body text-dark">
         <img class='img-fluid' src='${response.listings[3].photo}' style='width:100%;height:auto;background-color:black;' alt="" id="plotImage">
@@ -100,7 +100,7 @@ $.ajax(forRent).done(async function (response) {
     </div>
 </div>`;
 
-    document.getElementById('card2').innerHTML = `<div class="card border-dark mb-3" style="max-width: 18rem;">
+    document.getElementById('card2').innerHTML = await `<div class="card border-dark mb-3" style="max-width: 18rem;">
     <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[1].address}</div>
     <div class="card-body text-dark">
         <img class='img-fluid' src='${response.listings[1].photo}' style='width:100%;height:auto;background-color:black;' alt="" id="plotImage">
