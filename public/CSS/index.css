@@ -6,7 +6,7 @@ header {
 height:50vh;
 min-height:400px;
 background-size:cover;
-background-image:url('../../Assets/Images/ManOfSteel.jpg');
+background-image:url('../Assets/Images/ManOfSteel.jpg');
 }
 .navbarHeader{
 display: flex;
@@ -68,4 +68,11 @@ label{
 #sidebarList{
     list-style-type:none;
     position: fixed;
+    
+}
+#lists{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
