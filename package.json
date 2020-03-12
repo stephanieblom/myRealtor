@@ -18,9 +18,12 @@
   },
   "homepage": "https://github.com/stephanieblom/Project-2#readme",
   "dependencies": {
+    "@sendgrid/mail": "^6.5.4",
     "bcrypt": "^4.0.1",
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.4",
     "unirest": "^0.6.0"
-  }
+  },
+  "devDependencies": {}
 }

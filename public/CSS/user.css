@@ -1,12 +1,19 @@
 html *{
-    -webkit-font-smoothing: antialiased;
+    /* -webkit-font-smoothing: antialiased; */
     font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    height: 100vh;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 .h6, h6 {
     font-size: .75rem !important;
     font-weight: 500;
-    /* font-family: Roboto,Helvetica,Arial,sans-serif; */
     line-height: 1.5em;
     text-transform: uppercase;
 }
@@ -28,7 +35,7 @@ a .material-icons {
 }
 
 .profile-page .page-header {
-    height: 380px;
+    height: 250px;
     background-position:center;
 }
 
@@ -53,9 +60,9 @@ a .material-icons {
     content: "";
 }
 
-.header-filter::before {
+/* .header-filter::before {
     background: rgba(0,0,0,.5);
-}
+} */
 
 .main-raised {
     margin: -60px 30px 0;
@@ -63,7 +70,7 @@ a .material-icons {
     box-shadow: 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12), 0 8px 10px -5px rgba(0,0,0,.2);
 }
 
-.main {
+.main-body {
     background: #FFF;
     position: relative;
     z-index: 3;
@@ -140,8 +147,8 @@ p {
 
 .nav-pills .nav-item .nav-link.active {
     color: #fff;
-    background-color: #9c27b0;
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px rgba(156,39,176,.6);
+    background-color: #08088A;
+    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px ;
 }
 
 .nav-pills .nav-item .nav-link {
@@ -330,7 +337,12 @@ img.rounded {
   
   
   /*//////////////////////////////////////////////////////////////////
-  [ Contact 1 ]*/
+  [ Contact Form ]*/
+
+  #contact-form{
+    padding-bottom: 5%;
+    scroll-padding-top: 5%;
+  }
   
   .contact1 {
     width: 100%;
@@ -394,9 +406,11 @@ img.rounded {
     display: block;
     font-size: 24px;
     color: #333333;
-    line-height: 1.2;
     text-align: center;
     padding-bottom: 44px;
+    font-weight: 500;
+    line-height: 1.5em;
+    text-transform: uppercase;
   }
   
   input.input1 {
@@ -481,7 +495,7 @@ img.rounded {
     min-width: 193px;
     height: 50px;
     border-radius: 25px;
-    background: #57b846;
+    background: #08088A;
     font-family: Montserrat-Bold;
     font-size: 15px;
     line-height: 1.5;
