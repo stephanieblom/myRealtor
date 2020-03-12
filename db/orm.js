@@ -34,16 +34,9 @@ function saveList(data){
     const dbList = new dbL ( ListInfo );
     return dbList.save(  );
 }
-
-
-module.exports = {
-    saveUser,
-    saveList
-
-
 async function checkUserCredentials ( Email, password ){
     console.log( Email );
-    const emailCheck =  db.findOne({emailAddress: Email}, function(err, data){
+    const emailCheck =  await db.findOne({emailAddress: Email}, function(err, data){
         if(err){
           return ('err');
         }
@@ -53,7 +46,12 @@ async function checkUserCredentials ( Email, password ){
     return emailCheck
     
 }
+
+
 module.exports = {
     saveUser,
+    saveList,
     checkUserCredentials
+
 }
+
