@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 app.get( `/api/user/:userName`, async function( req, res ){
-    const myUser = await orm.getUserData( req.params.name );
+    const myUser = await orm.getUserData( req.params.userName );
     res.send( myUser );
 } );
 

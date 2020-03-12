@@ -1,8 +1,8 @@
 async function render(){
-
     const userName = location.hash.substr(1);
+    console.log( `[render] called userName(${userName})  `)
     const userData = await $.get(`/api/user/${userName}`)
-
+    console.log( ` .. result: `, userData );
     let firstName = userData.firstName;
     let lastName = userData.lastName;
     let mobile = userData.mobile;
@@ -62,20 +62,17 @@ $(".contact1-form-btn").on('click', scrollToTop);
 $(".contact1-form-btn").on('click', sendEmail);
 
 
-(function ($) {
-    "use strict";
-
-    
+$(document).ready( function(){
     /*==================================================================
-    [ Validate ]*/
+     [ Validate ]*/
+
+    $('.validate-form').on('submit',function(){
     var name = $('.validate-input input[name="name"]');
     var email = $('.validate-input input[name="email"]');
     var subject = $('.validate-input input[name="subject"]');
     var message = $('.validate-input textarea[name="message"]');
 
-
-    $('.validate-form').on('submit',function(){
-        var check = true;
+    var check = true;
 
         if($(name).val().trim() == ''){
             showValidate(name);
@@ -121,9 +118,5 @@ $(".contact1-form-btn").on('click', sendEmail);
     }
     
     
-
-})(jQuery);
-
-$(document).ready( function(){
     render();
 });

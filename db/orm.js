@@ -36,7 +36,7 @@ function saveList(data){
 }
 async function checkUserCredentials ( Email, password ){
     console.log( Email );
-    const emailCheck =  await db.findOne({emailAddress: Email}, function(err, data){
+    const emailCheck =  await dbU.findOne({emailAddress: Email}, function(err, data){
         if(err){
           return ('err');
         }
@@ -48,7 +48,7 @@ async function checkUserCredentials ( Email, password ){
 }
 
 function getUserData ( userName ){
-    const getUser = db.findOne({ emailAddress: { $regex: userName } });
+    const getUser = dbU.findOne({ emailAddress: { $regex: userName } });
     return getUser;
 }
 module.exports = {
