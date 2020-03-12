@@ -35,7 +35,13 @@ async function checkUserCredentials ( Email, password ){
     return emailCheck
     
 }
+
+function getUserData ( userName ){
+    const getUser = db.findOne({ emailAddress: { $regex: userName } });
+    return getUser;
+}
 module.exports = {
     saveUser,
-    checkUserCredentials
+    checkUserCredentials,
+    getUserData,
 }
