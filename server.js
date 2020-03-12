@@ -16,6 +16,14 @@ app.post( '/api/createUser', async function ( req, res ){
     res.send ( {message: 'user received! thx babe'})
 })
 
+app.post( '/api/createList', async function ( req, res ){
+    const mongoResponse = await orm.saveList( req.body );
+    console.log( mongoResponse );
+    res.send ( {message: 'Listing Saved into the Database'})
+})
+
+
+
 app.listen( PORT, function(){
     console.log( `RUNNING, http://localhost:${PORT}` );
 

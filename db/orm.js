@@ -5,7 +5,8 @@ mongoose.connect(`mongodb://localhost:27017/${process.env.realtor_users}`, {useN
 mongoose.set('useCreateIndex', true);
 
 // include mongoose models (it will include each file in the models directory)
-const db = require( './models/users.js' );
+const dbU = require( './models/users.js' );
+const dbL= require( './models/lists.js' );
 
 function saveUser( data ){
 
@@ -18,10 +19,25 @@ function saveUser( data ){
         emailAddress :  data.email,
         userPassword :  data.password,
     }
-    const dbUser = new db ( userData );
+    const dbUser = new dbU ( userData );
     return dbUser.save(  );
-
 }
+function saveList(data){
+    const ListInfo = {
+        address :  data.address,
+        photo :  data.photo,
+        propType : data.propType,
+        price : data.price,
+        beds :  data.beds,
+        baths :  data.baths,
+    }
+    const dbList = new dbL ( ListInfo );
+    return dbList.save(  );
+}
+
+
 module.exports = {
-    saveUser
+    saveUser,
+    saveList
+
 }
