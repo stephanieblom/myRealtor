@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require ( 'bcrypt' );
 
-mongoose.connect(`mongodb://localhost:27017/${process.env.realtor_users}`, {useNewUrlParser: true, useUnifiedTopology: true,});
+mongoose.connect(`mongodb://localhost:27017/undefined`, {useNewUrlParser: true, useUnifiedTopology: true,});
 mongoose.set('useCreateIndex', true);
 
 // include mongoose models (it will include each file in the models directory)
@@ -22,6 +22,20 @@ function saveUser( data ){
     return dbUser.save(  );
 
 }
+
+async function checkUserCredentials ( Email, password ){
+    console.log( Email );
+    const emailCheck =  db.findOne({emailAddress: Email}, function(err, data){
+        if(err){
+          return ('err');
+        }
+        return (data);
+      });
+    // console.log( checkEmail );
+    return emailCheck
+    
+}
 module.exports = {
-    saveUser
+    saveUser,
+    checkUserCredentials
 }

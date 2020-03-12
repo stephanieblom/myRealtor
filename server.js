@@ -14,6 +14,15 @@ app.post( '/api/createUser', async function ( req, res ){
     const mongoResonse = await orm.saveUser( req.body );
     console.log( mongoResonse );
     res.send ( {message: 'user received! thx babe'})
+});
+
+app.post( '/api/checkCredentials', async function ( req, res ) {
+    const email = req.body.email;
+    const pass = req.body.password;
+    console.log(`receiving sign in credentials: email- ${email}, password- ${pass}`);
+    const mongoResponse = await orm.checkUserCredentials ( email, pass );
+    await console.log( 'response: ', mongoResponse );
+    res.send( mongoResponse );
 })
 
 app.listen( PORT, function(){
