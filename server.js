@@ -2,6 +2,7 @@ const sgMail = require('@sendgrid/mail');
 const express = require( "express" );
 const bodyParser = require('body-parser')
 const orm = require( './db/orm' );
+require('dotenv').config();
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -22,8 +23,13 @@ app.get( `/api/user/:userName`, async function( req, res ){
 app.post( '/api/email', function( req, res ){
     console.log( `<< form data received: `, req.body );
     console.log(`sending message to ${req.body.to}`)
+    console.log(`process.env: ${process.env}`)
 
-    sgMail.send(req.body);
+    try{
+        sgMail.send(req.body);
+    } catch(err){
+        console.log(`error sending email ${err}`);
+    }
     // respond with something
     res.send( { message: `sent email to: ${req.body.to}` } );
 })
