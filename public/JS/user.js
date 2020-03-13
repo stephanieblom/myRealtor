@@ -191,24 +191,25 @@ function opennav() {
 function closenav() {
     document.getElementById('main').innerHTML = `
     <nav class="navbar navbar-expand-sm  navbar-light" style="color: white;">
-      <h2>MyREALTOR</h2>
-      <button class="navbar-toggler" type="button"
-          style="color: white;" onclick="opennav()">
-          <span>
-              <i class="fa fa-bars" style="color:#fff; font-size: 25px; "></i>
-          </span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbar1">
-          <ul class="nav navbar-nav">
-              <li class="nav-item">
-                  <a class="nav-link" href="index.html" style="color: white;">Home</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#" style="color: white;">Search</a>
-              </li>
-          </ul>
-      </div>
-  </nav>
+    <h2>MyREALTOR</h2>
+    <button class="navbar-toggler" type="button"
+        style="color: white;" onclick="opennav()">
+        <span>
+            <i class="fa fa-bars" style="color:#fff; font-size: 25px; "></i>
+        </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar1">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html" style="color: white;">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" style="color: white;"><i class="fa fa-search" aria-hidden="true"></i> Search for Agent</a>
+            </li> 
+        </ul>
+        <a class="btn btn-outline-light nav-link" href="login.html" role="button" style="color: white;">Login</a>
+    </div>
+</nav>
     `;
 }
     
