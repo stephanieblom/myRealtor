@@ -44,7 +44,6 @@ app.post( '/api/checkCredentials', async function ( req, res ) {
     // const userName = user.substring(0 , iend);
     // console.log( userName ); 
 
-<<<<<<< HEAD
 app.post( '/api/updateUserList', async function ( req, res ) {
     console.log(`object is`,req.body)
     const mongoResponse = await orm.updateUserListingArray(req.body);
@@ -58,11 +57,6 @@ app.post( '/api/createList', async function ( req, res ){
     const mongoResponse = await orm.saveList( req.body );
     console.log('saving the list', mongoResponse );
     res.send (mongoResponse)
-=======
-    // const getByUsername = await orm.getUserData( userName );
-    // console.log( getByUsername )
-    res.send( mongoResponse );
->>>>>>> master
 })
 
 

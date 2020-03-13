@@ -36,11 +36,7 @@ function saveList(data){
 }
 async function checkUserCredentials ( Email, password ){
     console.log( Email );
-<<<<<<< HEAD
     const emailCheck =  await user.findOne({emailAddress: Email}, function(err, data){
-=======
-    const emailCheck =  await dbU.findOne({emailAddress: Email}, function(err, data){
->>>>>>> master
         if(err){
           return ('err');
         }
@@ -56,21 +52,10 @@ const pushListsArray = await user.updateOne({_id:`${obj.userId}`}, { $push: { li
 return pushListsArray
 }
 
-<<<<<<< HEAD
 module.exports = {
     saveUser,
     saveList,
     checkUserCredentials,
     updateUserListingArray
 
-=======
-function getUserData ( userName ){
-    const getUser = dbU.findOne({ emailAddress: { $regex: userName } });
-    return getUser;
-}
-module.exports = {
-    saveUser,
-    checkUserCredentials,
-    getUserData,
->>>>>>> master
 }
