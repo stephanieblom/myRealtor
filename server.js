@@ -3,7 +3,7 @@ const express = require( "express" );
 const bodyParser = require('body-parser')
 const orm = require( './db/orm' );
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8088;
 const app = express();
 
 // to serve static content from the 'html' directory

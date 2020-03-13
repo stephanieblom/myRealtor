@@ -76,3 +76,18 @@ label{
     justify-content: space-around;
     align-items: center;
 }
+
+#loading{
+    width: 25px;
+    height:25px;
+    border: 5px solid #ccc;
+    border-top-color: red; 
+    border-radius: 100%;
+    position: absolute;
+    animation : spinner 0.7s linear infinite;
+}
+
+@keyframes spinner{
+    from{transform: rotate(0deg)}
+    to{transform: rotate(360deg)}
+}
