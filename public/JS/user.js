@@ -1,3 +1,23 @@
+async function render(){
+    const userName = location.hash.substr(1);
+    console.log( `[render] called userName(${userName})  `)
+    const userData = await $.get(`/api/user/${userName}`)
+    console.log( ` .. result: `, userData );
+    let firstName = userData.firstName;
+    let lastName = userData.lastName;
+    let mobile = userData.mobile;
+    let city = userData.city;
+    let company = userData.company;
+    let emailAddress = userData.emailAddress;
+
+    $('#userName').append(`${firstName} ${lastName}`);
+    $('#userCompany').append(`${company}`);
+    $('#userLocation').append(`${city}`);
+    $('#userMobile').append(`${mobile}`);
+
+}
+
+
 
 function scrollToContactForm(){
     $('html,body').animate({
@@ -14,7 +34,7 @@ async function sendEmail(){
     event.preventDefault();
 
     const msg = {
-        to: $("#senderEmail").val(), //Will be changed to user email upon database integration
+        to: emailAddress,
         from: $("#senderEmail").val(),
         subject: $("#emailSubject").val(),
         text: $("#emailBody").val(),
@@ -37,28 +57,22 @@ async function sendEmail(){
     }
 }
 
+$("#contact").on('click', scrollToContactForm);
+$(".contact1-form-btn").on('click', scrollToTop);
+$(".contact1-form-btn").on('click', sendEmail);
+
+
 $(document).ready( function(){
-
-    $("#contact").on('click', scrollToContactForm);
-    $(".contact1-form-btn").on('click', scrollToTop);
-    $(".contact1-form-btn").on('click', sendEmail);
-
-});
-
-(function ($) {
-    "use strict";
-
-    
     /*==================================================================
-    [ Validate ]*/
+     [ Validate ]*/
+
+    $('.validate-form').on('submit',function(){
     var name = $('.validate-input input[name="name"]');
     var email = $('.validate-input input[name="email"]');
     var subject = $('.validate-input input[name="subject"]');
     var message = $('.validate-input textarea[name="message"]');
 
-
-    $('.validate-form').on('submit',function(){
-        var check = true;
+    var check = true;
 
         if($(name).val().trim() == ''){
             showValidate(name);
@@ -106,6 +120,7 @@ $(document).ready( function(){
     
 
 })(jQuery);
-
+render();
 var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
 console.log(userCredentials);
+    

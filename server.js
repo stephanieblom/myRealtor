@@ -11,6 +11,11 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+app.get( `/api/user/:userName`, async function( req, res ){
+    const myUser = await orm.getUserData( req.params.userName );
+    res.send( myUser );
+} );
+
 app.post( '/api/email', function( req, res ){
     console.log( `<< form data received: `, req.body );
     console.log(`sending message to ${req.body.to}`)
@@ -34,9 +39,12 @@ app.post( '/api/checkCredentials', async function ( req, res ) {
     console.log(`receiving sign in credentials: email- ${email}, password- ${pass}`);
     const mongoResponse = await orm.checkUserCredentials ( email, pass );
     await console.log( 'response: ', mongoResponse );
-    res.send( mongoResponse );
-})
+    // const user = mongoResponse.emailAddress;
+    // const iend = user.indexOf("@");
+    // const userName = user.substring(0 , iend);
+    // console.log( userName ); 
 
+<<<<<<< HEAD
 app.post( '/api/updateUserList', async function ( req, res ) {
     console.log(`object is`,req.body)
     const mongoResponse = await orm.updateUserListingArray(req.body);
@@ -50,8 +58,12 @@ app.post( '/api/createList', async function ( req, res ){
     const mongoResponse = await orm.saveList( req.body );
     console.log('saving the list', mongoResponse );
     res.send (mongoResponse)
+=======
+    // const getByUsername = await orm.getUserData( userName );
+    // console.log( getByUsername )
+    res.send( mongoResponse );
+>>>>>>> master
 })
-
 
 
 app.listen( PORT, function(){
