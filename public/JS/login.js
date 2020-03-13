@@ -42,7 +42,7 @@ async function signIn() {
     }
     console.log( 'User Credentials: ', userCredentials );
     const checkCredentials = await $.post( '/api/checkCredentials', userCredentials );
-    console.log( checkCredentials );
+    console.log( 'check credentials result:', checkCredentials );
     if ( !checkCredentials ) {
         toastr.error( 'USER DOES NOT EXIST ')
     } else if ( signInPassword !== checkCredentials.userPassword ){
@@ -50,7 +50,7 @@ async function signIn() {
     } else {
         toastr.success( 'It worked :) ');
         localStorage.setItem('checkCredentials',JSON.stringify(checkCredentials))
-        location.href = '/user.html';
+       // location.href = `/user.html#`;
      };
 
 }

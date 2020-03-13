@@ -1,21 +1,22 @@
-async function render(){
-    const userName = location.hash.substr(1);
-    console.log( `[render] called userName(${userName})  `)
-    const userData = await $.get(`/api/user/${userName}`)
-    console.log( ` .. result: `, userData );
-    let firstName = userData.firstName;
-    let lastName = userData.lastName;
+ async function render(){
+   const userName = location.hash.substr(1);
+ console.log( `[render] called userName(${userName})  `)
+const userData = await $.get(`/api/user/${userName}`)
+console.log( ` .. result: `, userData );
+  let firstName = userData.firstName;
+   let lastName = userData.lastName;
     let mobile = userData.mobile;
-    let city = userData.city;
+   let city = userData.city;
     let company = userData.company;
-    let emailAddress = userData.emailAddress;
+     let emailAddress = userData.emailAddress;
+     let listings = userData.listings;
 
     $('#userName').append(`${firstName} ${lastName}`);
     $('#userCompany').append(`${company}`);
     $('#userLocation').append(`${city}`);
-    $('#userMobile').append(`${mobile}`);
+$('#userMobile').append(`${mobile}`);
 
-}
+ }
 
 
 
@@ -118,9 +119,9 @@ $(document).ready( function(){
     }
     
     
+    render();
+});
 
-})(jQuery);
-render();
 var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
 console.log(userCredentials);
     
