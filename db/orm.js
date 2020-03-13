@@ -6,7 +6,7 @@ mongoose.set('useCreateIndex', true);
 
 // include mongoose models (it will include each file in the models directory)
 const user = require( './models/users.js' );
-const list= require( './models/lists.js' );
+const list = require( './models/lists.js' );
 
 function saveUser( data ){
 
@@ -47,15 +47,44 @@ async function checkUserCredentials ( Email, password ){
     return emailCheck
 }
 async function updateUserListingArray(obj){
- 
     console.log(`actual address`,obj)
-    const pushListsArray = await user.updateOne({_id:`${obj.userId}`}, { $push: { listings: mongoose.Types.ObjectId(obj.listId) } });
+
+    const pushListId = mongoose.Types.ObjectId(obj.listId);
+    console.log( '[Pushing into user listing id: ]', pushListId );
+
+    const pushListsArray = await user.updateOne({_id:`${obj.userId}`}, { $push: { listings: pushListId } });
     return pushListsArray
 }
 
-function getUserData ( userName ){
-    const getUser = user.findOne({ emailAddress: { $regex: userName } });
+async function getUserData ( userName ){
+    const getUser = await user.findOne({ emailAddress: { $regex: userName } }).populate("listings");
+    console.log('[getUserData] getUser id: ', getUser.listings );
+    // const userListings = await list.find( { _id: { $in: [ mongoose.Types.ObjectId('5e6bb30926f4242db832062d'), mongoose.Types.ObjectId("5e6bd82133524e27f4c0318e") ] } } );
+    // const userListings = await list.find( { _id: getUser.listings } );
+    
+    // list.find( { _id: { $in: [ 
+    //     mongoose.Types.ObjectId('5e6bb30926f4242db832062e'),
+    //     mongoose.Types.ObjectId('5e6bd82133524e27f4c0318f')] } } );
+    // console.log( `userListings: `, userListings );
     return getUser;
+}
+async function getUserListings( userList ){
+    
+    console.log(`[getUserListing])`,userList);
+
+    let listSet = [];
+    userList.forEach( async _id=>{
+        console.log( `.. list item ${_id} ${typeof(_id)} `);
+        const fetchItem = await list.find( {_id: String(_id) });
+        listSet.push( fetchItem );
+    })
+
+    //    let listId = mongoose.Types.ObjectId( id );
+    //    const listAll = await list.find( {_id: listId });
+    // //    const listAll = list.find( { beds: 6 });
+       console.log(`listAll: `, listSet );
+
+    // return listInfo
 }
 function updateUserBio ( Email , data ){
     const updateUser = user.findOne( {email: Email}, {$set:{bio: data }}, {} )
@@ -66,6 +95,7 @@ module.exports = {
     checkUserCredentials,
     updateUserListingArray,
     getUserData,
+    getUserListings,
     updateUserBio
 }
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-let lists = new Schema ({
+let list = new Schema ({
    address :  { type: String, trim: true, required: true},
    photo :  { type: String, trim: true, required: true },
    propType : { type: String },
@@ -10,4 +10,4 @@ let lists = new Schema ({
    baths :  { type: Number, required: true, trim: true } 
 } );
 
-module.exports = mongoose.model('lists', lists);
+module.exports = mongoose.model('list', list);

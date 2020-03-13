@@ -262,13 +262,15 @@ async function saveListing(id){
     }
     console.log( 'new List: ', listData );
         const sendInfo = await $.post( '/api/createList', listData );
-        console.log(sendInfo._id);
+        console.log(" [send Info id] ", sendInfo._id);
+
         var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
-        console.log(userCredentials._id);
-        console.log(listData);
+        console.log( '[User Credential id]', userCredentials._id);
+        console.log( '[ListData]', listData);
+
         const userList = {
         userId : userCredentials._id,
-        ListId : sendInfo._id
+        listId : sendInfo._id
         };
         try{
         const pushList = await $.post('api/updateUserList', userList);
