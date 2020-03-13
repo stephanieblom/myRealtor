@@ -22,6 +22,7 @@ function saveUser( data ){
     const dbUser = new user ( userData );
     return dbUser.save(  );
 }
+
 function saveList(data){
     const ListInfo = {
         address :  data.address,
@@ -43,19 +44,28 @@ async function checkUserCredentials ( Email, password ){
         return (data);
       });
     // console.log( checkEmail );
-    return emailCheck 
+    return emailCheck
 }
 async function updateUserListingArray(obj){
  
-console.log(`actual address`,obj)
-const pushListsArray = await user.updateOne({_id:`${obj.userId}`}, { $push: { listings: mongoose.Types.ObjectId(obj.listId) } });
-return pushListsArray
+    console.log(`actual address`,obj)
+    const pushListsArray = await user.updateOne({_id:`${obj.userId}`}, { $push: { listings: mongoose.Types.ObjectId(obj.listId) } });
+    return pushListsArray
 }
 
+function getUserData ( userName ){
+    const getUser = user.findOne({ emailAddress: { $regex: userName } });
+    return getUser;
+}
+function updateUserBio ( Email , data ){
+    const updateUser = user.findOne( {email: Email}, {$set:{bio: data }}, {} )
+}
 module.exports = {
     saveUser,
     saveList,
     checkUserCredentials,
-    updateUserListingArray
-
+    updateUserListingArray,
+    getUserData,
+    updateUserBio
 }
+
