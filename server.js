@@ -40,11 +40,26 @@ app.post( '/api/checkCredentials', async function ( req, res ) {
     const mongoResponse = await orm.checkUserCredentials ( email, pass );
     await console.log( 'response: ', mongoResponse );
 
+    res.send(mongoResponse);
+});
+
+app.post( '/api/updateUserList', async function ( req, res ) {
+    console.log(`object is`,req.body)
+    const mongoResponse = await orm.updateUserListingArray(req.body);
+     console.log( 'response: ', mongoResponse );
     res.send( mongoResponse );
-})
+});
+
+
+app.post( '/api/createList', async function ( req, res ){
+    console.log(req.body);
+    const mongoResponse = await orm.saveList( req.body );
+    console.log('saving the list', mongoResponse );
+    res.send (mongoResponse)
+});
 
 
 app.listen( PORT, function(){
-    console.log( `RUNNING, http://localhost:${PORT}` );
+    console.log( `RUNNING, http://localhost:${PORT}` ); });
 
- });
+ 
