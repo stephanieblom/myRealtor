@@ -6,12 +6,50 @@ html *{
 body{
     height: 100vh;
     background-size: cover;
-    margin: 0 -1px 0 0;
+    margin: 0 -3px 0 0;
     padding: 0;
     border: 0;
 }
+header {
+  height:30vh;
+  min-height:400px;
+  background-size:cover;
+  /* background-image:url('../Assets/Images/ManOfSteel.jpg'); */
+  }
 
-.h6, h6 {
+  ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.navbar{
+  box-shadow: none;
+}
+.navbar-nav {
+  float:none;
+  margin:0 auto;
+  display: block;
+  text-align: center;
+  
+  }
+  
+  .navbar-nav > li {
+  display: inline-block;
+  float:none;
+  }
+  .navbarHeader{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    }
+
+    h2{
+      padding: 13px; 
+      text-transform: uppercase;
+      font-size: 3.6vh;
+      }
+h6, h6 {
     font-size: .75rem !important;
     font-weight: 500;
     line-height: 1.5em;
@@ -39,7 +77,7 @@ a .material-icons {
 }
 
 .profile-page .page-header {
-    height: 250px;
+    height: 0px;
     background-position:center;
 }
 
@@ -53,7 +91,7 @@ a .material-icons {
     align-items: center;
 }
 
-.header-filter:after, .header-filter:before {
+/* .header-filter:after, .header-filter:before {
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -62,7 +100,7 @@ a .material-icons {
     left: 0;
     top: 0;
     content: "";
-}
+} */
 
 /* .header-filter::before {
     background: rgba(0,0,0,.5);
@@ -133,7 +171,7 @@ p {
     margin-top: 4.284rem;
 }
 
-.nav-pills, .nav-tabs {
+/* .nav-pills, .nav-tabs {
     border: 0;
     border-radius: 3px;
     padding: 0 15px;
@@ -175,7 +213,7 @@ p {
     display: block;
     font-size: 30px;
     padding: 15px 0;
-}
+} */
 
 .tab-space {
     padding: 20px 0 50px;

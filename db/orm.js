@@ -5,8 +5,8 @@ mongoose.connect(`mongodb://localhost:27017/undefined`, {useNewUrlParser: true, 
 mongoose.set('useCreateIndex', true);
 
 // include mongoose models (it will include each file in the models directory)
-const dbU = require( './models/users.js' );
-const dbL= require( './models/lists.js' );
+const user = require( './models/users.js' );
+const list= require( './models/lists.js' );
 
 function saveUser( data ){
 
@@ -19,9 +19,10 @@ function saveUser( data ){
         emailAddress :  data.email,
         userPassword :  data.password,
     }
-    const dbUser = new dbU ( userData );
+    const dbUser = new user ( userData );
     return dbUser.save(  );
 }
+
 function saveList(data){
     const ListInfo = {
         address :  data.address,
@@ -31,12 +32,12 @@ function saveList(data){
         beds :  data.beds,
         baths :  data.baths,
     }
-    const dbList = new dbL ( ListInfo );
+    const dbList = new list ( ListInfo );
     return dbList.save(  );
 }
 async function checkUserCredentials ( Email, password ){
     console.log( Email );
-    const emailCheck =  await db.findOne({emailAddress: Email}, function(err, data){
+    const emailCheck =  await user.findOne({emailAddress: Email}, function(err, data){
         if(err){
           return ('err');
         }
@@ -44,14 +45,27 @@ async function checkUserCredentials ( Email, password ){
       });
     // console.log( checkEmail );
     return emailCheck
-    
+}
+async function updateUserListingArray(obj){
+ 
+    console.log(`actual address`,obj)
+    const pushListsArray = await user.updateOne({_id:`${obj.userId}`}, { $push: { listings: mongoose.Types.ObjectId(obj.listId) } });
+    return pushListsArray
 }
 
-
+function getUserData ( userName ){
+    const getUser = user.findOne({ emailAddress: { $regex: userName } });
+    return getUser;
+}
+function updateUserBio ( Email , data ){
+    const updateUser = user.findOne( {email: Email}, {$set:{bio: data }}, {} )
+}
 module.exports = {
     saveUser,
     saveList,
-    checkUserCredentials
-
+    checkUserCredentials,
+    updateUserListingArray,
+    getUserData,
+    updateUserBio
 }
 

@@ -42,15 +42,36 @@ async function signIn() {
     }
     console.log( 'User Credentials: ', userCredentials );
     const checkCredentials = await $.post( '/api/checkCredentials', userCredentials );
-    console.log( checkCredentials );
-    if ( signInPassword !== checkCredentials.userPassword ){
+    console.log( 'check credentials result:', checkCredentials );
+    if ( !checkCredentials ) {
+        toastr.error( 'USER DOES NOT EXIST ')
+    } else if ( signInPassword !== checkCredentials.userPassword ){
         toastr.error('WRONG PASSWORD!!!!!');
     } else {
-        toastr.success( 'It worked :) '); };
+        toastr.success( 'It worked :) '); 
+            // const user = checkCredentials.emailAddress;
+            // const iend = user.indexOf("@");
+            // const userName = user.substring(0 , iend);
+            // console.log( userName ); 
+           const userName =  createUserName ( checkCredentials.emailAddress )
+
+        location.href = `/user.html#${userName}`
+        toastr.success( 'It worked :) ');
+        localStorage.setItem('checkCredentials',JSON.stringify(checkCredentials))
+       // location.href = `/user.html#`;
+     };
 
 }
 $('#signUp-Btn').on('click', addUser );
 $('.login-Btn').on('click', signIn );
+
+function createUserName ( email ){
+    const user = email;
+    const iend = user.indexOf("@");
+    const userName = user.substring(0 , iend);
+    console.log( userName ); 
+    return userName;
+}
 
 function clearValues() {
     $('#signInEmail').val('');
