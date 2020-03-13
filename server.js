@@ -39,13 +39,7 @@ app.post( '/api/checkCredentials', async function ( req, res ) {
     console.log(`receiving sign in credentials: email- ${email}, password- ${pass}`);
     const mongoResponse = await orm.checkUserCredentials ( email, pass );
     await console.log( 'response: ', mongoResponse );
-    // const user = mongoResponse.emailAddress;
-    // const iend = user.indexOf("@");
-    // const userName = user.substring(0 , iend);
-    // console.log( userName ); 
 
-    // const getByUsername = await orm.getUserData( userName );
-    // console.log( getByUsername )
     res.send( mongoResponse );
 })
 

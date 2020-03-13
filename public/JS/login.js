@@ -49,10 +49,25 @@ async function signIn() {
         toastr.error('WRONG PASSWORD!!!!!');
     } else {
         toastr.success( 'It worked :) '); };
+            // const user = checkCredentials.emailAddress;
+            // const iend = user.indexOf("@");
+            // const userName = user.substring(0 , iend);
+            // console.log( userName ); 
+           const userName =  createUserName ( checkCredentials.emailAddress )
+
+        location.href = `/user.html#${userName}`
 
 }
 $('#signUp-Btn').on('click', addUser );
 $('.login-Btn').on('click', signIn );
+
+function createUserName ( email ){
+    const user = email;
+    const iend = user.indexOf("@");
+    const userName = user.substring(0 , iend);
+    console.log( userName ); 
+    return userName;
+}
 
 function clearValues() {
     $('#signInEmail').val('');
