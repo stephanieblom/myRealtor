@@ -107,3 +107,5 @@ $(document).ready( function(){
 
 })(jQuery);
 
+var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
+console.log(userCredentials);

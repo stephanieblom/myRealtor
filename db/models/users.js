@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// const lists= require( './lists' );
+
 let users = new Schema ({
    firstName :  { type: String, trim: true, required: true, },
    lastName :  { type: String, trim: true, required: true, },
@@ -8,10 +10,7 @@ let users = new Schema ({
    company : { type: String, trim: true },
    emailAddress :  { type: String, required: true, trim: true, unique: true, },
    userPassword :  { type: String, required: true, trim: true },
-   // favourites: [{
-   //    thumbId: mongoose.Types.ObjectId,
-//    //    favouriteTime: {type: Date, default: Date.now} }]
-//    listings: [ mongoose.Types.ObjectId ]
+   listings :{type: mongoose.Schema.Types.ObjectId, ref: 'lists'}
 } );
 
 module.exports = mongoose.model('users', users);

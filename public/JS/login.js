@@ -46,7 +46,10 @@ async function signIn() {
     if ( signInPassword !== checkCredentials.userPassword ){
         toastr.error('WRONG PASSWORD!!!!!');
     } else {
-        toastr.success( 'It worked :) '); };
+        toastr.success( 'It worked :) ');
+        localStorage.setItem('checkCredentials',JSON.stringify(checkCredentials))
+        location.href = '/user.html';
+     };
 
 }
 $('#signUp-Btn').on('click', addUser );

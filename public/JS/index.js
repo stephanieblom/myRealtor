@@ -1,3 +1,9 @@
+
+    let lists = [];
+
+
+
+
 function opennav() {
     document.getElementById('main').innerHTML = ``;
     document.getElementById('main').innerHTML = `
@@ -210,11 +216,12 @@ function displaySales(){
         console.log(response3);
         document.getElementById('displaySample').innerHTML = '';
         document.getElementById('displaySample').innerHTML = `
-    <div class="card-header" style="color: black;">Latest Listing of sales</div>
-    <div class="card-body" id='lists'>
-    <div class='row' id='sales' style='display:flex;justify-content:space-around;'>
-    </div>
-    </div>`;
+         <button class='btn btn-light'>Done</button>
+        <div class="card-header" style="color: black;">Latest Listing of sales</div>
+        <div class="card-body" id='lists'>
+        <div class='row' id='sales' style='display:flex;justify-content:space-around;'>
+        </div>
+        </div>`;
 
         for (let i = 0; i < response3.listings.length; i++) {
             document.getElementById('sales').innerHTML += `
@@ -255,7 +262,23 @@ async function saveListing(id){
     }
     console.log( 'new List: ', listData );
         const sendInfo = await $.post( '/api/createList', listData );
-        //toastr.success( ` Property has been Saved` ); 
-        console.log(sendInfo);
+        console.log(sendInfo._id);
+        var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
+        console.log(userCredentials._id);
+        console.log(listData);
+        const userList = {
+        userId : userCredentials._id,
+        ListId : sendInfo._id
+        };
+        try{
+        const pushList = await $.post('api/updateUserList', userList);
+         console.log(`success`,pushList)
 
-}
+        }
+        catch(err){
+            console.log(err);
+        }
+       
+    }
+
+
