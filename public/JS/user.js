@@ -1,3 +1,6 @@
+
+
+
 let emailAddress;
  async function render(){
    const userName = location.hash.substr(1);
@@ -111,6 +114,26 @@ $(".contact1-form-btn").on('click', sendEmail);
 
 
 $(document).ready( function(){
+
+
+    function checkLoginStatus () {
+        const userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
+
+        if ( !userCredentials ){
+            console.log( 'logged out!' );
+        } else {
+            console.log( 'logged in!');
+            $('#login-Btn').text('Log Out');
+            $('#login-Btn').click( function() {
+                console.log('you clicked the logout button');
+                localStorage.removeItem( 'checkCredentials' );
+            })
+
+        }
+    }
+
+    checkLoginStatus();
+
     /*==================================================================
      [ Validate ]*/
 
@@ -144,7 +167,9 @@ $(document).ready( function(){
         }
 
         return check;
+
     });
+    
 
 
     $('.validate-form .input1').each(function(){
@@ -167,6 +192,8 @@ $(document).ready( function(){
     
     
     render();
+
+
 });
 
 var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));

@@ -1,8 +1,38 @@
+$(document).ready( function() {
+    console.log( 'document ready!');
+    
+    const userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
 
-    let lists = [];
+    if ( !userCredentials ){
+        console.log( 'logged out!' );
+    } else {
+        console.log( 'logged in!');
+
+        $('#login-Btn').text('Log Out');
+        $('#login-Btn').click( function() {
+            console.log('you clicked the logout button');
+            localStorage.removeItem( 'checkCredentials' );
+        })
+        const userName = createUserName( userCredentials.emailAddress );
+
+        $('#profile-Btn').removeAttr( 'href' );
+        $('#profile-Btn').attr( 'href', `/user.html#${userName}`);
+
+        $('#try-Btn').attr( 'style', 'opacity: 0;')
 
 
 
+        function createUserName ( email ){
+            const user = email;
+            const iend = user.indexOf("@");
+            const userName = user.substring(0 , iend);
+            console.log( userName ); 
+            return userName;
+        }
+    }
+})
+
+let lists = [];
 
 function opennav() {
     document.getElementById('main').innerHTML = ``;
