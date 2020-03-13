@@ -1,3 +1,4 @@
+let emailAddress;
 async function render(){
 
     const userName = location.hash.substr(1);
@@ -8,7 +9,7 @@ async function render(){
     let mobile = userData.mobile;
     let city = userData.city;
     let company = userData.company;
-    let emailAddress = userData.emailAddress;
+    emailAddress = userData.emailAddress;
 
     $('#userName').append(`${firstName} ${lastName}`);
     $('#userCompany').append(`${company}`);
