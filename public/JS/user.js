@@ -1,20 +1,22 @@
  async function render(){
    const userName = location.hash.substr(1);
- console.log( `[render] called userName(${userName})  `)
-const userData = await $.get(`/api/user/${userName}`)
-console.log( ` .. result: `, userData );
-  let firstName = userData.firstName;
-   let lastName = userData.lastName;
+   console.log( `[render] called userName(${userName})  `)
+   const userData = await $.get(`/api/user/${userName}`)
+   
+   console.log( ` .. result: `, userData );
+   
+    let firstName = userData.firstName;
+    let lastName = userData.lastName;
     let mobile = userData.mobile;
-   let city = userData.city;
+    let city = userData.city;
     let company = userData.company;
-     let emailAddress = userData.emailAddress;
-     let listings = userData.listings;
+    let emailAddress = userData.emailAddress;
+    let listings = userData.listings;
 
     $('#userName').append(`${firstName} ${lastName}`);
     $('#userCompany').append(`${company}`);
     $('#userLocation').append(`${city}`);
-$('#userMobile').append(`${mobile}`);
+    $('#userMobile').append(`${mobile}`);
 
  }
 
@@ -124,4 +126,44 @@ $(document).ready( function(){
 
 var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
 console.log(userCredentials);
+
+function opennav() {
+    document.getElementById('main').innerHTML = ``;
+    document.getElementById('main').innerHTML = `
+    <button onclick='closenav()'><i class="fas fa-arrow-circle-right fa-2x" style="color: white; margin: 15px;"></i></button>
+    <ul id='sidebarList'>
+      <li>
+          <a class="nav-link" href="index.html" style="color: white;">Home</a>
+      </li>
+      <li>
+          <a class="nav-link" href="#" style="color: white;">Search</a>
+      </li>
+      <li>
+          <a class="nav-link" href="login.html" style="color: white;">Login</a>
+      </li>
+  </ul>`;
+}
+function closenav() {
+    document.getElementById('main').innerHTML = `
+    <nav class="navbar navbar-expand-sm  navbar-light" style="color: white;">
+      <h2>MyREALTOR</h2>
+      <button class="navbar-toggler" type="button"
+          style="color: white;" onclick="opennav()">
+          <span>
+              <i class="fa fa-bars" style="color:#fff; font-size: 25px; "></i>
+          </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbar1">
+          <ul class="nav navbar-nav">
+              <li class="nav-item">
+                  <a class="nav-link" href="index.html" style="color: white;">Home</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#" style="color: white;">Search</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+    `;
+}
     
