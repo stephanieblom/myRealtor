@@ -34,10 +34,10 @@ app.post( '/api/email', function( req, res ){
     res.send( { message: `sent email to: ${req.body.to}` } );
 })
 
-app.post( '/api/createUser', async function ( req, res ){
+app.post( '/api/createUser',  function ( req, res ){
     const newUser = req.body;
     console.log('Received New User: ', newUser.firstName )
-    const mongoResonse = await orm.saveUser( req.body );
+    const mongoResonse =  orm.saveUser( req.body );
     console.log( mongoResonse );
     res.send ( {message: 'user received! thx babe'})
 });
@@ -57,11 +57,11 @@ app.post( '/api/listDescription', async function ( req, res ){
     res.send();
 })
 
-app.post( '/api/checkCredentials', async function ( req, res ) {
+app.post( '/api/checkCredentials',  function ( req, res ) {
     const email = req.body.email;
     const pass = req.body.password;
     console.log(`receiving sign in credentials: email- ${email}, password- ${pass}`);
-    const mongoResponse = await orm.checkUserCredentials ( email, pass );
+    const mongoResponse =  orm.checkUserCredentials ( email, pass );
     console.log( 'response: ', mongoResponse );
 
     res.send(mongoResponse);
