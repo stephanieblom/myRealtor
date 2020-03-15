@@ -91,3 +91,18 @@ label{
     from{transform: rotate(0deg)}
     to{transform: rotate(360deg)}
 }
+
+#fadein{
+    box-shadow: 3px 3px 3px 3px #c2c0c0;
+    animation: fade 0.7s;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+       opacity: 1;
+    }
+
+}
