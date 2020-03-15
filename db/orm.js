@@ -37,8 +37,19 @@ function saveUser( data ){
     const updateUser =  await user.updateMany({ emailAddress : data.emailAddress }, {$set : userData }, );
     console.log( 'updated user :/');
 }
+async function updateListing( data ){
+    console.log('[orm] Data id: ', data.id );
+    console.log('[orm] data description: ', data.description );
+    const description = {
+        description : data.description,
+    };
+    // const objectId = mongoose.Types.ObjectId
+
+    const updateListing = await list.updateOne({ _id : String(data.id) }, { $set : description } );
+}
 
 function saveList(data){
+    console.log( data );
     const ListInfo = {
         address :  data.address,
         photo :  data.photo,
@@ -46,6 +57,7 @@ function saveList(data){
         price : data.price,
         beds :  data.beds,
         baths :  data.baths,
+        description : ''
     }
     const dbList = new list ( ListInfo );
     return dbList.save(  );
@@ -112,6 +124,7 @@ module.exports = {
     updateUserListingArray,
     getUserData,
     getUserListings,
-    updateUserBio
+    updateUserBio,
+    updateListing
 }
 

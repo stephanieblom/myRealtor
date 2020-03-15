@@ -7,7 +7,9 @@ let list = new Schema ({
    propType : { type: String },
    price : { type: String, trim: true },
    beds : { type: Number, trim: true },
-   baths :  { type: Number, required: true, trim: true } 
+   baths :  { type: Number, required: true, trim: true },
+   description : { type : String, trim: true },
+
 } );
 
 module.exports = mongoose.model('list', list);

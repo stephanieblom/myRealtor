@@ -50,6 +50,13 @@ app.post( '/api/updateUser', async function ( req, res ){
     res.send ( {message: 'user info received! thx babe'})
 });
 
+app.post( '/api/listDescription', async function ( req, res ){
+    console.log('Receving list desctiption in server..', req.body);
+    const mongoResonse = await orm.updateListing( req.body );
+    console.log( 'sent list...');
+    res.send();
+})
+
 app.post( '/api/checkCredentials', async function ( req, res ) {
     const email = req.body.email;
     const pass = req.body.password;

@@ -31,8 +31,9 @@ let emailAddress;
         $('#studio').append( '<h1 style="color: grey;">No Listings</h1>')
     } 
     listings.forEach( function( listing ){
+        console.log(typeof(listing._id))
         $('#studio').append(`
-        <div class=" col-lg-4 col-md-6 col-12">
+        <div class="col-lg-4 col-md-6 col-12" >
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
                 <h3 class="mb-0">${firstName}</h3>
@@ -42,7 +43,9 @@ let emailAddress;
                 <a style="text-align:left;"><i class="fa fa-map-marker"></i>: ${listing.address}</a>
                 <a style="text-align:left;"><i class="fa fa-usd"></i>: ${listing.price}</a>
                 <br>
-                <p class="card-text mb-auto">Beautiful 2 bedroom, 2 bathroom apt right in the heart of Toronto.</p>
+                <i style="" id="${listing._id}" onclick="editDescription('${listing._id}', '${listing.description}')" class="fa fa-sm fa-edit"></i>
+                <p class="card-text mb-auto" id="description${listing._id}">${listing.description}</p>
+                <input type="text" class="form-control" id="editDescription${listing._id}" style="display: none"></input>
                 <br>
                 <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
             </div>
@@ -131,9 +134,13 @@ $(document).ready( function(){
                 if ( userNameURL === userNameLocalStorage ){
                     console.log( 'This is the user profile page' );
                     $('.profile-content').prepend('<i class="edit-Btn fa fa-2x fa-edit" onclick="editPage()">')
+                    } else {
+                        $('.fa-edit').hide();
+                    }
+
             } 
         }
-    }
+
 
     checkLoginStatus();
 
@@ -198,7 +205,7 @@ $(document).ready( function(){
 
 
 });
-
+// JASON CODE FOR EDITING PAGE BEGINS!!!
 async function editPage(){
     console.log( 'Editing Page!')
     document.getElementById("editForm").style.display = "block";
@@ -257,7 +264,7 @@ async function editPage(){
     toastr.success( `User Updated: ${userInfo.firstName} ${userInfo.lastName}` );
     setTimeout( function() {
         location.reload();
-    }, 2500 );
+    }, 1500 );
 
   }
   function cancelForm() {
@@ -266,6 +273,38 @@ async function editPage(){
     $('.description').removeAttr('style','display: none;');
     $('.edit-Btn').removeAttr('style','display: none;');
   }
+  async function editDescription( id, val){
+    console.log('val: ', val )
+    await $(`#editDescription${id}`).val( val );
+
+      console.log(`pressed edit description${id}` );
+      $(`#${id}`).removeAttr('class', 'fa-edit');
+      $(`#${id}`).attr('class', 'fa-save fa');
+      $(`#description${id}`).hide();
+
+      $(`#editDescription${id}`).removeAttr('style','display: none');
+
+      
+      $(`#${id}`).removeAttr('onclick');
+      $(`#${id}`).attr('onclick', `updateList( '${id}' )`);
+
+  }
+  async function updateList( id ) {
+    const newDescription = $(`#editDescription${id}`).val();
+      console.log('updating list', id );
+      console.log('description: ', newDescription);
+
+      const obj = {
+          id : id,
+          description : newDescription
+      }
+      const sendDescription = await $.post( '/api/listDescription', obj );
+      toastr.success('Listing description saved!');
+      setTimeout( function() {
+        location.reload();
+    }, 1500 );
+  }
+  //JASON FUNCTIONS FOR EDITING PAGE ENDS!!!!!
 
 var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
 console.log(userCredentials);
