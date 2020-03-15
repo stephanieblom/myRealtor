@@ -32,6 +32,13 @@ let emailAddress;
     } 
     listings.forEach( function( listing ){
         console.log(typeof(listing._id))
+
+        let description; 
+            if( !listing.description ) {
+                console.log('no description');
+                description = ''
+            } else { description = listing.description };
+
         $('#studio').append(`
         <div class="col-lg-4 col-md-6 col-12" >
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -43,8 +50,8 @@ let emailAddress;
                 <a style="text-align:left;"><i class="fa fa-map-marker"></i>: ${listing.address}</a>
                 <a style="text-align:left;"><i class="fa fa-usd"></i>: ${listing.price}</a>
                 <br>
-                <i style="" id="${listing._id}" onclick="editDescription('${listing._id}', '${listing.description}')" class="fa fa-sm fa-edit"></i>
-                <p class="card-text mb-auto" id="description${listing._id}">${listing.description}</p>
+                <i style="display: none;" id="${listing._id}" onclick="editDescription('${listing._id}', '${description}')" class="fa fa-sm fa-edit"></i>
+                <p class="card-text mb-auto" id="description${listing._id}">${description}</p>
                 <input type="text" class="form-control" id="editDescription${listing._id}" style="display: none"></input>
                 <br>
                 <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
@@ -104,45 +111,7 @@ $(".contact1-form-btn").on('click', scrollToTop);
 $(".contact1-form-btn").on('click', sendEmail);
 
 
-$(document).ready( function(){
-
-
-    function checkLoginStatus () {
-        const userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
-
-        if ( !userCredentials ){
-            console.log( 'logged out!' );
-        } else {
-            console.log( 'logged in!');
-            $('#login-Btn').text('Log Out');
-            $('#login-Btn').click( function() {
-                console.log( 'you clicked the logout button' );
-                localStorage.removeItem( 'checkCredentials' );
-            });
-
-            const userNameURL = location.hash.substr(1);
-            const userNameLocalStorage = createUserName( userCredentials.emailAddress );
-
-            function createUserName ( email ){
-
-                const user = email;
-                const iend = user.indexOf("@");
-                const userName = user.substring(0 , iend);
-
-                return userName; }
-
-                if ( userNameURL === userNameLocalStorage ){
-                    console.log( 'This is the user profile page' );
-                    $('.profile-content').prepend('<i class="edit-Btn fa fa-2x fa-edit" onclick="editPage()">')
-                    } else {
-                        $('.fa-edit').hide();
-                    }
-
-            } 
-        }
-
-
-    checkLoginStatus();
+$(document).ready( async function(){
 
     /*==================================================================
      [ Validate ]*/
@@ -181,7 +150,6 @@ $(document).ready( function(){
     });
     
 
-
     $('.validate-form .input1').each(function(){
         $(this).focus(function(){
            hideValidate(this);
@@ -201,8 +169,42 @@ $(document).ready( function(){
     }
     
     
-    render();
+    await render();
 
+//TO CHANGE PAGE BASED ON WHETHER THEY ARE LOGGIN IN OR NOT
+    function checkLoginStatus () {
+        const userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
+
+        if ( !userCredentials ){
+            console.log( 'logged out!' );
+        } else {
+            console.log( 'logged in!');
+            $('#login-Btn').text('Log Out');
+            $('#login-Btn').click( function() {
+                console.log( 'you clicked the logout button' );
+                localStorage.removeItem( 'checkCredentials' );
+            });
+
+            const userNameURL = location.hash.substr(1);
+            const userNameLocalStorage = createUserName( userCredentials.emailAddress );
+
+            function createUserName ( email ){
+
+                const user = email;
+                const iend = user.indexOf("@");
+                const userName = user.substring(0 , iend);
+
+                return userName; }
+
+                if ( userNameURL === userNameLocalStorage ){
+                    console.log( 'This is the user profile page' );
+                    $('.profile-content').prepend('<i class="edit-Btn fa fa-2x fa-edit" onclick="editPage()">');
+                    $('.fa-edit').removeAttr('style','display : none');
+                } 
+
+            } 
+        }
+        checkLoginStatus();
 
 });
 // JASON CODE FOR EDITING PAGE BEGINS!!!
