@@ -1,3 +1,6 @@
+
+
+
 let emailAddress;
  async function render(){
    const userName = location.hash.substr(1);
@@ -12,6 +15,7 @@ let emailAddress;
     let mobile = userData.mobile;
     let city = userData.city;
     let company = userData.company;
+    let bio = userData.bio
     emailAddress = userData.emailAddress;
     let listings = userData.listings;
     console.log(`# listings: ${listings}`)
@@ -20,49 +24,46 @@ let emailAddress;
     $('#userCompany').append(`${company}`);
     $('#userLocation').append(`${city}`);
     $('#userMobile').append(`${mobile}`);
+    $('#bio').append( bio )
 
-    $('#studio').append(`
-    <div class="row mb-2">
-        <div class="col-md-6 col-12">
+    if ( !listings.length) {
+        console.log( 'empty array!')
+        $('#studio').append( '<h1 style="color: grey;">No Listings</h1>')
+    } 
+    listings.forEach( function( listing ){
+        console.log(typeof(listing._id))
+
+        let description; 
+            if( !listing.description ) {
+                console.log('no description');
+                description = ''
+            } else { description = listing.description };
+
+        $('#studio').append(`
+        <div class="col-lg-4 col-md-6 col-12" >
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
                 <h3 class="mb-0">${firstName}</h3>
                 <div class="mb-1 text-muted">Listed: Nov 12</div>
-                <a style="text-align:left;"><i class="fa fa-bed"></i>: 2</a>
-                <a style="text-align:left;"><i class="fa fa-bath"></i>: 2</a>
-                <a style="text-align:left;"><i class="fa fa-map-marker"></i>: Toronto</a>
-                <a style="text-align:left;"><i class="fa fa-usd"></i>: 350,000</a>
+                <a style="text-align:left;"><i class="fa fa-bed"></i>: ${listing.beds}</a>
+                <a style="text-align:left;"><i class="fa fa-bath"></i>: ${listing.baths}</a>
+                <a style="text-align:left;"><i class="fa fa-map-marker"></i>: ${listing.address}</a>
+                <a style="text-align:left;"><i class="fa fa-usd"></i>: ${listing.price}</a>
                 <br>
-                <p class="card-text mb-auto">Beautiful 2 bedroom, 2 bathroom apt right in the heart of Toronto.</p>
+                <i style="display: none;" id="${listing._id}" onclick="editDescription('${listing._id}', '${description}')" class="fa fa-sm fa-edit"></i>
+                <p class="card-text mb-auto" id="description${listing._id}">${description}</p>
+                <input type="text" class="form-control" id="editDescription${listing._id}" style="display: none"></input>
                 <br>
                 <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
             </div>
             <div class="col-12">
-                <img src="https://www.narcity.com/uploads/265664_0a377ae85d7c781f5b778f9eb647bf83982cf3b2.jpg_facebook.jpg" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
-            </div>
-            </div>
-        </div>
-        <div class="col-md-6 col-12">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                <div class="col p-4 d-flex flex-column position-static">
-                <h3 class="mb-0">2 Bedroom Apartment, Entertainment District</h3>
-                <div class="mb-1 text-muted">Listed: Nov 12</div>
-                    <a style="text-align:left;"><i class="fa fa-bed"></i>: 2</a>
-                    <a style="text-align:left;"><i class="fa fa-bath"></i>: 2</a>
-                    <a style="text-align:left;"><i class="fa fa-map-marker"></i>: Toronto</a>
-                    <a style="text-align:left;"><i class="fa fa-usd"></i>: 450,000</a>
-                    <br>
-                    <p class="card-text mb-auto">Beautiful 2 bedroom, 2 bathroom apt right in the heart of Toronto.</p>
-                    <br>
-                    <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
-                </div>
-                <div class="col-12">
-                    <img src="https://g5-assets-cld-res.cloudinary.com/image/upload/q_auto,f_auto,fl_lossy/v1546721532/g5/g5-c-5cpnmi9wp-quadreal/g5-cl-1hj4qag6gj-bretton-place/uploads/Bretton_Place_Kitchen_Dining_staged_110618_hrf09r.jpg" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
-                </div>
+                <img src="${listing.photo}" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
             </div>
         </div>
-    </div>`)
+        `)
 
+    })
+    
  }
 
 
@@ -110,7 +111,8 @@ $(".contact1-form-btn").on('click', scrollToTop);
 $(".contact1-form-btn").on('click', sendEmail);
 
 
-$(document).ready( function(){
+$(document).ready( async function(){
+
     /*==================================================================
      [ Validate ]*/
 
@@ -144,8 +146,9 @@ $(document).ready( function(){
         }
 
         return check;
-    });
 
+    });
+    
 
     $('.validate-form .input1').each(function(){
         $(this).focus(function(){
@@ -166,8 +169,144 @@ $(document).ready( function(){
     }
     
     
-    render();
+    await render();
+
+//TO CHANGE PAGE BASED ON WHETHER THEY ARE LOGGIN IN OR NOT
+    function checkLoginStatus () {
+        const userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
+
+        if ( !userCredentials ){
+            console.log( 'logged out!' );
+        } else {
+            console.log( 'logged in!');
+            $('#login-Btn').text('Log Out');
+            $('#login-Btn').click( function() {
+                console.log( 'you clicked the logout button' );
+                localStorage.removeItem( 'checkCredentials' );
+            });
+
+            const userNameURL = location.hash.substr(1);
+            const userNameLocalStorage = createUserName( userCredentials.emailAddress );
+
+            function createUserName ( email ){
+
+                const user = email;
+                const iend = user.indexOf("@");
+                const userName = user.substring(0 , iend);
+
+                return userName; }
+
+                if ( userNameURL === userNameLocalStorage ){
+                    console.log( 'This is the user profile page' );
+                    $('.profile-content').prepend('<i class="edit-Btn fa fa-2x fa-edit" onclick="editPage()">');
+                    $('.fa-edit').removeAttr('style','display : none');
+                } 
+
+            } 
+        }
+        checkLoginStatus();
+
 });
+// JASON CODE FOR EDITING PAGE BEGINS!!!
+async function editPage(){
+    console.log( 'Editing Page!')
+    document.getElementById("editForm").style.display = "block";
+    $('.name').attr('style','display: none;');
+    $('.description').attr('style','display: none;');
+    $('.edit-Btn').attr('style','display: none;');
+    
+//Getting user data and appending into form
+    const userName = location.hash.substr(1);
+    console.log( `[render] called userName(${userName})  `)
+    const userData = await $.get(`/api/user/${userName}`)
+ 
+    
+    console.log( ` .. form result: `, userData );
+    
+     let firstName = userData.firstName;
+     let lastName = userData.lastName;
+     let mobile = userData.mobile;
+     let city = userData.city;
+     let company = userData.company;
+     let bio = userData.bio
+
+     $( '#editFirstName' ).val( firstName );
+     $( '#editLastName' ).val( lastName );
+     $( '#editMobile' ).val( mobile );
+     $( '#editCity' ).val( city );
+     $( '#editCompany' ).val( company );
+     $( '#editBio' ).val( bio );
+}
+
+  
+  async function saveForm( ) {
+
+    const inputFirstName = $('#editFirstName').val();
+    const inputLastName= $('#editLastName').val();
+    const inputMobile = $('#editMobile').val();
+    const inputCity = $('#editCity').val();
+    const inputCompany = $('#editCompany').val();
+    const inputBio = $('#editBio').val();
+    const localStorageInfo = JSON.parse(localStorage.getItem( 'checkCredentials') );
+    const emailAddress = localStorageInfo.emailAddress;
+    console.log( 'Email: ', emailAddress );
+
+
+    const userInfo = {
+        firstName: inputFirstName,
+        lastName: inputLastName,
+        mobile: inputMobile,
+        city: inputCity,
+        company: inputCompany,
+        bio : inputBio,
+        emailAddress : emailAddress,
+    }
+    console.log( 'User info values: ', userInfo);
+    const sendInfo = await $.post( '/api/updateUser', userInfo);
+    toastr.success( `User Updated: ${userInfo.firstName} ${userInfo.lastName}` );
+    setTimeout( function() {
+        location.reload();
+    }, 1500 );
+
+  }
+  function cancelForm() {
+    document.getElementById("editForm").style.display = "none";
+    $('.name').removeAttr('style','display: none;');
+    $('.description').removeAttr('style','display: none;');
+    $('.edit-Btn').removeAttr('style','display: none;');
+  }
+  async function editDescription( id, val){
+    console.log('val: ', val )
+    await $(`#editDescription${id}`).val( val );
+
+      console.log(`pressed edit description${id}` );
+      $(`#${id}`).removeAttr('class', 'fa-edit');
+      $(`#${id}`).attr('class', 'fa-save fa');
+      $(`#description${id}`).hide();
+
+      $(`#editDescription${id}`).removeAttr('style','display: none');
+
+      
+      $(`#${id}`).removeAttr('onclick');
+      $(`#${id}`).attr('onclick', `updateList( '${id}' )`);
+
+  }
+  async function updateList( id ) {
+    const newDescription = $(`#editDescription${id}`).val();
+      console.log('updating list', id );
+      console.log('description: ', newDescription);
+
+      const obj = {
+          id : id,
+          description : newDescription
+      }
+      const sendDescription = await $.post( '/api/listDescription', obj );
+      toastr.success('Listing description saved!');
+      setTimeout( function() {
+        location.reload();
+    }, 1500 );
+  }
+  //JASON FUNCTIONS FOR EDITING PAGE ENDS!!!!!
 
 var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
 console.log(userCredentials);
