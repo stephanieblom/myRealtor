@@ -13,6 +13,7 @@
         <link rel="stylesgeet" href="https://rawgit.com/creativetimofficial/material-kit/master/assets/css/material-kit.css">
         <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="CSS/user.css">
+
     </head>
     <body>
         <div class="wrapper profile-page" style="background-image:url('assets/Images/ManOfSteel.jpg');">
@@ -51,7 +52,7 @@
                 <!-- User pofile info -->
                 <div class="profile-content">
                     <div class="container">
-                        <div class="row">
+                        <div class="row">                                            
                             <div class="col-md-6 ml-auto mr-auto">
                                <div class="profile">
                                     <div class="avatar">
@@ -66,9 +67,55 @@
                                     </div>
                                 </div>
                             </div>
+                            <!-- Pop-up for thats hidden when page loads -->
+                            <div class="form-popup" id="editForm" style="display: none">
+                                <form action="/action_page.php" class="form-container">
+                                    <h1>Edit Info</h1>
+                                        <hr>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                        <label for="inputFirstName">First Name</label>
+                                        <input type="text" class="form-control" id="editFirstName" placeholder="John">
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                        <label for="inputLastName">Last Name</label>
+                                        <input type="text" class="form-control" id="editLastName" val="">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="inputMobile">Phone Number</label>
+                                            <input type="text" class="form-control" id="editMobile" val="">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputCompany">City</label>
+                                            <input type="text" class="form-control" id="editCity" val="">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="inputCompany">Company</label>
+                                            <input type="text" class="form-control" id="editCompany" val=""">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group" style="width: 80%;">
+                                            <label for="inputCompany">Bio</label>
+                                            <textarea type="text" class="form-control" id="editBio" val="" style="height: 100px;" cols="30" rows="4"></textarea>
+                                        </div>
+                                    </div>
+                                        <hr>
+                                    <div class="form-row">
+                                        <div class="col-6">
+                                            <button type="button" class="btn save" onclick="saveForm()" style="border: solid thin grey;">Save Info</button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button type="button" class="btn cancel" onclick="cancelForm()" style="border: solid thin grey;">Cancel</button>
+                                        </div>
+                                    </div>                             
+                                </form>
+                            </div>
                         </div>
-                        <div class="description text-center">
-                            <p>An artist of considerable range, Chet Faker — the name taken by Melbourne-raised, Brooklyn-based Nick Murphy — writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. </p>
+                        <div class="description text-center" id="bio" >
+                            
                         </div>
                         <div class="row">
                             <div class="col-md-6 ml-auto mr-auto">
@@ -92,9 +139,9 @@
                         </div>
                 
                     <div class="tab-content tab-space">
-                        <div class="tab-pane active text-center gallery" id="studio">
-                            <div class="row mb-2">
-                                <div class="col-md-6">
+                        <div class="tab-pane active text-center gallery" >
+                            <div class="row mb-2" id="studio">
+                                <!-- <div class="col-md-6">
                                   <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                                     <div class="col p-4 d-flex flex-column position-static">
                                       <h3 class="mb-0">2 Bedroom Apartment, Entertainment District</h3>
@@ -131,7 +178,7 @@
                                           <img src="https://g5-assets-cld-res.cloudinary.com/image/upload/q_auto,f_auto,fl_lossy/v1546721532/g5/g5-c-5cpnmi9wp-quadreal/g5-cl-1hj4qag6gj-bretton-place/uploads/Bretton_Place_Kitchen_Dining_staged_110618_hrf09r.jpg" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
                                       </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>  
                         </div>
                     </div>
@@ -186,6 +233,7 @@
             </div>
     
             <br><br><br>
+
     
             
           
@@ -195,6 +243,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
         <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+        <!-- for Toaster -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+            
         <script src="JS/user.js" ></script>
 </body>
 </html>

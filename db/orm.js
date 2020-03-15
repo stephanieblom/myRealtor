@@ -23,6 +23,21 @@ function saveUser( data ){
     return dbUser.save(  );
 }
 
+ async function updateUser( data ){
+
+    const userData = {
+        firstName :  data.firstName,
+        lastName :  data.lastName,
+        mobile : data.mobile,
+        city : data.city,
+        company : data.company,
+        bio : data.bio
+    }
+    console.log( 'email in orm: ', data.emailAddress );
+    const updateUser =  await user.updateMany({ emailAddress : data.emailAddress }, {$set : userData }, );
+    console.log( 'updated user :/');
+}
+
 function saveList(data){
     const ListInfo = {
         address :  data.address,
@@ -58,7 +73,7 @@ async function updateUserListingArray(obj){
 
 async function getUserData ( userName ){
     const getUser = await user.findOne({ emailAddress: { $regex: userName } }).populate("listings");
-    console.log('[getUserData] getUser id: ', getUser.listings );
+    // console.log('[getUserData] getUser id: ', getUser.listings );
     // const userListings = await list.find( { _id: { $in: [ mongoose.Types.ObjectId('5e6bb30926f4242db832062d'), mongoose.Types.ObjectId("5e6bd82133524e27f4c0318e") ] } } );
     // const userListings = await list.find( { _id: getUser.listings } );
     
@@ -91,6 +106,7 @@ function updateUserBio ( Email , data ){
 }
 module.exports = {
     saveUser,
+    updateUser,
     saveList,
     checkUserCredentials,
     updateUserListingArray,

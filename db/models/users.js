@@ -8,6 +8,7 @@ let user = new Schema ({
    mobile : { type: String, trim: true },
    city : { type: String, trim: true },
    company : { type: String, trim: true },
+   bio : { type : String, trim: true },
    emailAddress :  { type: String, required: true, trim: true, unique: true, },
    userPassword :  { type: String, required: true, trim: true },
    listings : [ {type: Schema.Types.ObjectId, ref: 'list'} ]

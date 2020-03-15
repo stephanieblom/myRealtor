@@ -15,7 +15,7 @@ sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 app.get( `/api/user/:userName`, async function( req, res ){
 
     const myUser = await orm.getUserData( req.params.userName );
-    console.log( 'myUser:', myUser );
+    // console.log( 'myUser:', myUser );
 
     res.send( myUser );
 } );
@@ -40,6 +40,14 @@ app.post( '/api/createUser', async function ( req, res ){
     const mongoResonse = await orm.saveUser( req.body );
     console.log( mongoResonse );
     res.send ( {message: 'user received! thx babe'})
+});
+
+app.post( '/api/updateUser', async function ( req, res ){
+    const userInfo = req.body;
+    console.log('Received user info: ', userInfo.firstName )
+    const mongoResonse = await orm.updateUser( req.body );
+    console.log( mongoResonse );
+    res.send ( {message: 'user info received! thx babe'})
 });
 
 app.post( '/api/checkCredentials', async function ( req, res ) {
