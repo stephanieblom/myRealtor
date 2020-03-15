@@ -1,5 +1,47 @@
+$(document).ready( function() {
+    console.log( 'document ready!');
+    
+    const userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
+
+    if ( !userCredentials ){
+        console.log( 'logged out!' );
+    } else {
+        console.log( 'logged in!');
+
+        $('#login-Btn').text('Log Out');
+        $('#login-Btn').click( function() {
+            console.log('you clicked the logout button');
+            localStorage.removeItem( 'checkCredentials' );
+        })
+        const userName = createUserName( userCredentials.emailAddress );
+
+<<<<<<< HEAD
+let lists = [];
+=======
+<<<<<<< HEAD
+let lists = [];
+=======
+        $('#profile-Btn').removeAttr( 'href' );
+        $('#profile-Btn').attr( 'href', `/user.html#${userName}`);
+>>>>>>> 910df653999c47caaf3a0fc01fd421fbdf731de2
+
+        $('#try-Btn').attr( 'style', 'opacity: 0;')
+
+
+
+        function createUserName ( email ){
+            const user = email;
+            const iend = user.indexOf("@");
+            const userName = user.substring(0 , iend);
+            console.log( userName ); 
+            return userName;
+        }
+    }
+})
 
 let lists = [];
+
+>>>>>>> master
 function opennav() {
     document.getElementById('main').innerHTML = ``;
     document.getElementById('main').innerHTML = `
@@ -361,13 +403,15 @@ async function saveListing(id){
     }
     console.log( 'new List: ', listData );
         const sendInfo = await $.post( '/api/createList', listData );
-        console.log(sendInfo._id);
+        console.log(" [send Info id] ", sendInfo._id);
+
         var userCredentials = JSON.parse(localStorage.getItem('checkCredentials'));
-        console.log(userCredentials._id);
-        console.log(listData);
+        console.log( '[User Credential id]', userCredentials._id);
+        console.log( '[ListData]', listData);
+
         const userList = {
         userId : userCredentials._id,
-        ListId : sendInfo._id
+        listId : sendInfo._id
         };
         try{
         const pushList = await $.post('api/updateUserList', userList);

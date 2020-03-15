@@ -565,8 +565,18 @@ img.rounded {
     -o-transform: translateX(10px);
     transform: translateX(10px);
   }
-  
-  
+  .edit-Btn {
+    float: right;
+    padding: 10px;
+  }
+  .form-popup{
+    width: 80%;
+    border: solid grey thin;
+    border-radius: 3px;
+    padding: 5vw;
+    margin: auto;
+  }
+ 
   
   
   /*------------------------------------------------------------------
@@ -617,9 +627,15 @@ img.rounded {
     .container-contact1 {
       padding: 90px 15px 88px 15px;
     }
+    .form-popup{
+      width: 95%;
+    }
   }
 
   @media (min-width: 376px) {
+    .form-popup{
+      width: 95%;
+    }
     ul{
       display: flex;
       flex-direction: row;
