@@ -50,7 +50,7 @@ label{
 #mysidebar {
     height: 100%;
     width: 0;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 0;
     left: 0;
@@ -76,3 +76,50 @@ label{
     justify-content: space-around;
     align-items: center;
 }
+
+#loading{
+    width: 25px;
+    height:25px;
+    border: 5px solid #ccc;
+    border-top-color: red; 
+    border-radius: 100%;
+    position: absolute;
+    animation : spinner 0.7s linear infinite;
+}
+
+@keyframes spinner{
+    from{transform: rotate(0deg)}
+    to{transform: rotate(360deg)}
+}
+
+#fadein{
+    box-shadow: 3px 3px 3px 3px #c2c0c0;
+    animation: fade 0.7s;
+}
+
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+       opacity: 1;
+    }
+
+}
+a:hover {
+  opacity: 0.5;
+  }
+
+  .card{
+    animation: fade 0.7s;
+  }
+#searchbtn2{
+   margin-left: auto;
+   margin-right: auto;
+  }
+  .addToList{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden; 
+  }

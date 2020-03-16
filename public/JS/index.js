@@ -15,6 +15,7 @@ $(document).ready( function() {
         })
         const userName = createUserName( userCredentials.emailAddress );
 
+let lists = [];
         $('#profile-Btn').removeAttr( 'href' );
         $('#profile-Btn').attr( 'href', `/user.html#${userName}`);
 
@@ -33,7 +34,6 @@ $(document).ready( function() {
 })
 
 let lists = [];
-
 function opennav() {
     document.getElementById('main').innerHTML = ``;
     document.getElementById('main').innerHTML = `
@@ -43,13 +43,10 @@ function opennav() {
           <a class="nav-link" href="#" style="color: white;">Home</a>
       </li>
       <li>
-          <a class="nav-link" href="#" style="color: white;">Search</a>
+          <a class="nav-link" href="user.html" style="color: white;">Search</a>
       </li>
       <li>
-          <a class="nav-link" href="#" style="color: white;">View-List</a>
-      </li>
-      <li>
-          <a class="nav-link" href="#" style="color: white;">Login</a>
+          <a class="nav-link" href="login.html" style="color: white;">Login</a>
       </li>
   </ul>`;
 }
@@ -94,11 +91,27 @@ var forSale = {
 }
 
 $.ajax(forSale).done(async function (response) {
-    console.log(response);
-    document.getElementById('card3').innerHTML = await `<div class="card border-dark mb-3" style="max-width: 18rem;">
+   let check = await response.listings[0].photo_count === 0;
+    console.log(check);
+    if (check === true){
+    document.getElementById('card3').innerHTML = await `<div class="card border-dark mb-3  w3-animate-fading" style="max-width: 18rem;" id='fadein'>
     <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[0].address}</div>
     <div class="card-body text-dark">
-        <img class='img-fluid' src='${response.listings[0].photo}' style='width:100%;height:auto;' alt="" id="plotImage">
+        <img class='img-fluid' src='https://www.dummyimage.com/600x400/6e6e6e/ffffff.jpg&text=NO-IMAGES+AVAILABLE' style='width:100%;height:auto;' alt="" id="plotImage">
+        <h5 class="card-title" style="color: black;">Sale</h5>
+        <ul style="list-style-type:none;text-align:left;">
+        <li style='color:black;'><i class="fas fa-home" style='color:black;'></i>: ${response.listings[0].prop_type}<li>
+        <li style='color:black;'><i class="fas fa-usd" style='color:black;'></i>: ${response.listings[0].price}<li>
+        <li style='color:black;'><i class="fas fa-bed" style='color:black;'></i>: ${response.listings[0].beds}<li>
+        <li style='color:black;'><i class="fas fa-bath" style='color:black;'></i>: ${response.listings[0].baths}<li>
+        </ul>
+    </div>
+</div>`;}
+else {
+    document.getElementById('card3').innerHTML = await `<div class="card border-dark mb-3  animate-fading" style="max-width: 18rem;" id='fadein'>
+    <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[0].address}</div>
+    <div class="card-body text-dark">
+        <img class='img-fluid' src='${response.listings[0].photo}' style='width:100%; height:auto;' alt="" id="plotImage">
         <h5 class="card-title" style="color: black;">Sale</h5>
         <ul style="list-style-type:none;text-align:left;">
         <li style='color:black;'><i class="fas fa-home" style='color:black;'></i>: ${response.listings[0].prop_type}<li>
@@ -108,6 +121,7 @@ $.ajax(forSale).done(async function (response) {
         </ul>
     </div>
 </div>`;
+}
 });
 var forRent = {
     "async": true,
@@ -122,10 +136,62 @@ var forRent = {
 
 $.ajax(forRent).done(async function (response) {
     console.log(response);
-    document.getElementById('card1').innerHTML =  await `<div class="card border-dark mb-3" style="max-width: 18rem;">
+    let check1 = await response.listings[1].photo_count === 0;
+    let check2 = await response.listings[3].photo_count === 0;
+    console.log(check1,check2);
+    if(check1 === true){
+    document.getElementById('card2').innerHTML = await `<div class="card border-dark mb-3  w3-animate-fading" style="max-width: 18rem;" id='fadein'>
+    <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[12].address}</div>
+    <div class="card-body text-dark">
+        <img class='img-fluid' src='https://www.dummyimage.com/600x400/6e6e6e/ffffff.jpg&text=NO-IMAGES+AVAILABLE' style='width:100%;height:auto;background-color:black;' alt="" id="plotImage">
+        <h5 class="card-title" style="color: black;">Rent</h5>
+        <ul style="list-style-type:none;text-align:left;">
+        <li style='color:black;'><i class="fas fa-home" style='color:black;'></i>: ${response.listings[12].prop_type}<li>
+        <li style='color:black;'><i class="fas fa-usd" style='color:black;'></i>: ${response.listings[12].price}<li>
+        <li style='color:black;'><i class="fas fa-bed" style='color:black;'></i>: ${response.listings[12].beds}<li>
+        <li style='color:black;'><i class="fas fa-bath" style='color:black;'></i>: ${response.listings[12].baths}<li>
+        </ul>
+    </div>
+</div>`;
+    }
+    else{
+        document.getElementById('card2').innerHTML = await `<div class="card border-dark mb-3  w3-animate-fading" style="max-width: 18rem;" id='fadein'>
+        <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[12].address}</div>
+        <div class="card-body text-dark">
+            <img class='img-fluid' src='${response.listings[12].photo}' style='max-width:100%;background-color:lightgray;height:auto;background-color:black;' alt="" id="plotImage">
+            <h5 class="card-title" style="color: black;">Rent</h5>
+            <ul style="list-style-type:none;text-align:left;">
+            <li style='color:black;'><i class="fas fa-home" style='color:black;'></i>: ${response.listings[12].prop_type}<li>
+            <li style='color:black;'><i class="fas fa-usd" style='color:black;'></i>: ${response.listings[12].price}<li>
+            <li style='color:black;'><i class="fas fa-bed" style='color:black;'></i>: ${response.listings[12].beds}<li>
+            <li style='color:black;'><i class="fas fa-bath" style='color:black;'></i>: ${response.listings[12].baths}<li>
+            </ul>
+        </div>
+    </div>`;
+    }
+
+});
+var forRent2 = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://realtor.p.rapidapi.com/properties/list-for-rent?radius=10&sort=relevance&state_code=NY&limit=200&city=New%20York%20City&offset=0",
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-host": "realtor.p.rapidapi.com",
+        "x-rapidapi-key": "2c764843ddmshb324175d9a3ca0ap10afdcjsn487f67974fbf"
+    }
+}
+
+$.ajax(forRent2).done(async function (response) {
+    console.log(response);
+
+    let check2 = await response.listings[3].photo_count === 0;
+    console.log(check2);
+    if(check2 === true){
+    document.getElementById('card1').innerHTML =  await `<div class="card border-dark mb-3  w3-animate-fading" style="max-width: 18rem;" id='fadein'>
     <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[3].address}</div>
     <div class="card-body text-dark">
-        <img class='img-fluid' src='${response.listings[3].photo}' style='width:100%;height:auto;background-color:black;' alt="" id="plotImage">
+        <img class='img-fluid' src='https://www.dummyimage.com/600x400/6e6e6e/ffffff.jpg&text=NO-IMAGES+AVAILABLE' style='width:100%;height:auto;background-color:black;' alt="" id="plotImage">
         <h5 class="card-title" style="color: black;">Rent</h5>
         <ul style="list-style-type:none;text-align:left;">
         <li style='color:black;'><i class="fas fa-home" style='color:black;'></i>: ${response.listings[3].prop_type}<li>
@@ -134,25 +200,24 @@ $.ajax(forRent).done(async function (response) {
         <li style='color:black;'><i class="fas fa-bath" style='color:black;'></i>: ${response.listings[3].baths}<li>
         </ul>
     </div>
-</div>`;
+</div>`;}
+else{
+    document.getElementById('card1').innerHTML =  await `<div class="card border-dark mb-3  w3-animate-fading" style="max-width: 18rem;" id='fadein'>
+        <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[3].address}</div>
+        <div class="card-body text-dark">
+            <img class='img-fluid' src='${response.listings[3].photo}' style='width:100%;height:auto;background-color:black;' alt="" id="plotImage">
+            <h5 class="card-title" style="color: black;">Rent</h5>
+            <ul style="list-style-type:none;text-align:left;">
+            <li style='color:black;'><i class="fas fa-home" style='color:black;'></i>: ${response.listings[3].prop_type}<li>
+            <li style='color:black;'><i class="fas fa-usd" style='color:black;'></i>: ${response.listings[3].price}<li>
+            <li style='color:black;'><i class="fas fa-bed" style='color:black;'></i>: ${response.listings[3].beds}<li>
+            <li style='color:black;'><i class="fas fa-bath" style='color:black;'></i>: ${response.listings[3].baths}<li>
+            </ul>
+        </div>
+    </div>`;
 
-    document.getElementById('card2').innerHTML = await `<div class="card border-dark mb-3" style="max-width: 18rem;">
-    <div class="card-header" style="color: black;" id="cardHeader3">${response.listings[1].address}</div>
-    <div class="card-body text-dark">
-        <img class='img-fluid' src='${response.listings[1].photo}' style='width:100%;height:auto;background-color:black;' alt="" id="plotImage">
-        <h5 class="card-title" style="color: black;">Rent</h5>
-        <ul style="list-style-type:none;text-align:left;">
-        <li style='color:black;'><i class="fas fa-home" style='color:black;'></i>: ${response.listings[1].prop_type}<li>
-        <li style='color:black;'><i class="fas fa-usd" style='color:black;'></i>: ${response.listings[1].price}<li>
-        <li style='color:black;'><i class="fas fa-bed" style='color:black;'></i>: ${response.listings[1].beds}<li>
-        <li style='color:black;'><i class="fas fa-bath" style='color:black;'></i>: ${response.listings[1].baths}<li>
-        </ul>
-    </div>
-</div>`;
-
-
+}
 });
-
 
 function displayRentals() {
     let inputcity = document.getElementById('inputCity');
@@ -195,20 +260,38 @@ function displayRentals() {
     </div>`;
 
         for (let i = 0; i < response3.listings.length; i++) {
+            let check = await response3.listings[i].photo_count === 0;
+            if(check === true){
             document.getElementById('rentals').innerHTML += `
-            <div class="col-sm-6 col-md-3 col-lg-3 card" id=h${i} style='margin:6px;'>
+            <div class="col-sm-6 col-md-6 col-lg-3 card" id=h${i} style='margin:6px;'>
             <h5 class="text-uppercase title" id='title${i}' style='color:black;'>${response3.listings[i].address}</h5>
-            <img src="${response3.listings[i].photo}" id='photo${i}' class="img-fluid" >
+            <img src="https://www.dummyimage.com/600x400/6e6e6e/ffffff.jpg&text=NO-IMAGES+AVAILABLE" id='photo${i}' class="img-fluid" >
             <ul style="list-style-type:none;text-align:left;">
                 <li style='color:black;' id='type${i}'><i class="fas fa-home" style='color:black;'></i> ${response3.listings[i].prop_type}<li>
                 <li style='color:black;' id='price${i}'><i class="fas fa-usd" style='color:black;'></i> ${response3.listings[i].price}<li>
                 <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
                 <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
             </ul>
-            <button class='btn btn-light' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+            <button class='btn btn-light addToList' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
         </div> 
     
-    `;
+    `;}
+    else{
+        document.getElementById('rentals').innerHTML += `
+        <div class="col-sm-6 col-md-6 col-lg-3 card" id=h${i} style='margin:6px;'>
+        <h5 class="text-uppercase title" id='title${i}' style='color:black;'>${response3.listings[i].address}</h5>
+        <img src="${response3.listings[i].photo}" id='photo${i}' class="img-fluid" >
+        <ul style="list-style-type:none;text-align:left;">
+            <li style='color:black;' id='type${i}'><i class="fas fa-home" style='color:black;'></i> ${response3.listings[i].prop_type}<li>
+            <li style='color:black;' id='price${i}'><i class="fas fa-usd" style='color:black;'></i> ${response3.listings[i].price}<li>
+            <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
+            <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
+        </ul>
+        <button class='btn btn-light addToList' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+    </div> 
+
+`; 
+    }
         }
     });
 }
@@ -254,7 +337,23 @@ function displaySales(){
         </div>`;
 
         for (let i = 0; i < response3.listings.length; i++) {
+            let check = await response3.listings[i].photo_count === 0;
+            if(check === true){
             document.getElementById('sales').innerHTML += `
+            <div class="col-sm-6 col-md-3 col-lg-3 card" id=h${i} style='margin:6px;'>
+                <h5 class="text-uppercase title" id='title${i}' style='color:black;'>${response3.listings[i].address}</h5>
+                <img src="https://www.dummyimage.com/600x400/6e6e6e/ffffff.jpg&text=NO-IMAGES+AVAILABLE" id='photo${i}' class="img-fluid" >
+                <ul style="list-style-type:none;text-align:left;">
+                    <li style='color:black;' id='type${i}'><i class="fas fa-home" style='color:black;'></i> ${response3.listings[i].prop_type}<li>
+                    <li style='color:black;' id='price${i}'><i class="fas fa-usd" style='color:black;'></i> ${response3.listings[i].price}<li>
+                    <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
+                    <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
+                </ul>
+                <button class='btn btn-light addToList' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+            </div> 
+    `;}
+    else{
+        document.getElementById('sales').innerHTML += `
             <div class="col-sm-6 col-md-3 col-lg-3 card" id=h${i} style='margin:6px;'>
                 <h5 class="text-uppercase title" id='title${i}' style='color:black;'>${response3.listings[i].address}</h5>
                 <img src="${response3.listings[i].photo}" id='photo${i}' class="img-fluid" >
@@ -264,9 +363,10 @@ function displaySales(){
                     <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
                     <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
                 </ul>
-                <button class='btn btn-light' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+                <button class='btn btn-light addToList' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
             </div> 
     `;
+    }
         }
     });
 

@@ -317,7 +317,7 @@ function opennav() {
           <a class="nav-link" href="index.html" style="color: white;">Home</a>
       </li>
       <li>
-          <a class="nav-link" href="#" style="color: white;">Search</a>
+          <a class="nav-link" href="index.html" style="color: white;">Search</a>
       </li>
       <li>
           <a class="nav-link" href="login.html" style="color: white;">Login</a>
@@ -349,3 +349,6 @@ function closenav() {
     `;
 }
     
+
+let searchvalue = document.getElementById('searchbar');
+console.log(searchvalue.value);
