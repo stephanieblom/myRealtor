@@ -94,6 +94,7 @@ async function sendEmail(){
     
     if( apiResult.message ){
         console.log( `Successfully sent email!`);
+        toastr.success('Email sent!') ;
     
         // clear form.
         $('#senderName').val( "" );
