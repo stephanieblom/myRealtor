@@ -95,3 +95,6 @@ height: 8vh;
 margin-top: 35px;
 }
 }
+a:hover {
+    opacity: 0.5;
+    }

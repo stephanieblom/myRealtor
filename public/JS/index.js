@@ -15,15 +15,9 @@ $(document).ready( function() {
         })
         const userName = createUserName( userCredentials.emailAddress );
 
-<<<<<<< HEAD
 let lists = [];
-=======
-<<<<<<< HEAD
-let lists = [];
-=======
         $('#profile-Btn').removeAttr( 'href' );
         $('#profile-Btn').attr( 'href', `/user.html#${userName}`);
->>>>>>> 910df653999c47caaf3a0fc01fd421fbdf731de2
 
         $('#try-Btn').attr( 'style', 'opacity: 0;')
 
@@ -40,8 +34,6 @@ let lists = [];
 })
 
 let lists = [];
-
->>>>>>> master
 function opennav() {
     document.getElementById('main').innerHTML = ``;
     document.getElementById('main').innerHTML = `
@@ -51,13 +43,10 @@ function opennav() {
           <a class="nav-link" href="#" style="color: white;">Home</a>
       </li>
       <li>
-          <a class="nav-link" href="#" style="color: white;">Search</a>
+          <a class="nav-link" href="user.html" style="color: white;">Search</a>
       </li>
       <li>
-          <a class="nav-link" href="#" style="color: white;">View-List</a>
-      </li>
-      <li>
-          <a class="nav-link" href="#" style="color: white;">Login</a>
+          <a class="nav-link" href="login.html" style="color: white;">Login</a>
       </li>
   </ul>`;
 }

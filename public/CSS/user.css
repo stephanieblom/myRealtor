@@ -717,3 +717,6 @@ img.rounded {
     
     }
 }
+a:hover {
+  opacity: 0.5;
+  }
