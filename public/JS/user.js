@@ -352,3 +352,6 @@ function closenav() {
     `;
 }
     
+
+let searchvalue = document.getElementById('searchbar');
+console.log(searchvalue.value);

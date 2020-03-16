@@ -272,7 +272,7 @@ function displayRentals() {
                 <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
                 <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
             </ul>
-            <button class='btn btn-light' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+            <button class='btn btn-light addToList' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
         </div> 
     
     `;}
@@ -287,7 +287,7 @@ function displayRentals() {
             <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
             <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
         </ul>
-        <button class='btn btn-light' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+        <button class='btn btn-light addToList' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
     </div> 
 
 `; 
@@ -349,7 +349,7 @@ function displaySales(){
                     <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
                     <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
                 </ul>
-                <button class='btn btn-light' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+                <button class='btn btn-light addToList' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
             </div> 
     `;}
     else{
@@ -363,7 +363,7 @@ function displaySales(){
                     <li style='color:black;' id='bed${i}'><i class="fas fa-bed" style='color:black;'></i> ${response3.listings[i].beds}<li>
                     <li style='color:black;' id='bath${i}'><i class="fas fa-bath" style='color:black;'></i> ${response3.listings[i].baths}<li>
                 </ul>
-                <button class='btn btn-light' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
+                <button class='btn btn-light addToList' style='text-align:right;' onclick='saveListing(${i})' id='${i}'><i class="far fa-bookmark" style='color:black;'></i></button>
             </div> 
     `;
     }
