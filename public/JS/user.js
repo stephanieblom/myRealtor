@@ -50,8 +50,8 @@ let emailAddress;
                 <a ><i class="fa fa-bath"></i>: ${listing.baths}</a>
                 <a ><i class="fa fa-map-marker"></i>: ${listing.address}</a>
                 <i style="display: none;" id="${listing._id}" onclick="editDescription('${listing._id}', '${description}')" class="fa fa-sm fa-edit"></i>
-                <p class="card-text mb-auto" id="description${listing._id}" style="height: 50px;>${description}</p>
-                <input type="text" class="form-control" id="editDescription${listing._id}" style="display: none"></input>
+                <p class="card-text mb-auto" id="description${listing._id}" style="height: 50px;">${description}</p>
+                <input type="text" class="form-control" id="editDescription${listing._id}" style="display : none" ></input>
                 <br>
             </div>
             <div class="col-12">
