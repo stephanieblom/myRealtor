@@ -34,7 +34,7 @@ app.post( '/api/email', function( req, res ){
     res.send( { message: `sent email to: ${req.body.to}` } );
 })
 
-app.post( '/api/createUser', async function ( req, res ){
+app.post( '/api/createUser',  async function ( req, res ){
     const newUser = req.body;
     console.log('Received New User: ', newUser.firstName )
     const mongoResonse = await orm.saveUser( req.body );
