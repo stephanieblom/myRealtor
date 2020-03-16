@@ -160,50 +160,6 @@ p {
     margin-top: 4.284rem;
 }
 
-/* .nav-pills, .nav-tabs {
-    border: 0;
-    border-radius: 3px;
-    padding: 0 15px;
-}
-
-.nav .nav-item {
-    position: relative;
-    margin: 0 2px;
-}
-
-.nav-pills.nav-pills-icons .nav-item .nav-link {
-    border-radius: 4px;
-}
-
-.nav-pills .nav-item .nav-link.active {
-    color: #fff;
-    background-color: #08088A;
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.2), 0 13px 24px -11px ;
-}
-
-.nav-pills .nav-item .nav-link {
-    line-height: 24px;
-    font-size: 12px;
-    font-weight: 500;
-    min-width: 100px;
-    color: #555;
-    transition: all .3s;
-    border-radius: 30px;
-    padding: 10px 15px;
-    text-align: center;
-}
-
-.nav-pills .nav-item .nav-link:not(.active):hover {
-    background-color: rgba(200,200,200,.2);
-}
-
-
-.nav-pills .nav-item i {
-    display: block;
-    font-size: 30px;
-    padding: 15px 0;
-} */
-
 .tab-space {
     padding: 20px 0 50px;
 }

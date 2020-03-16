@@ -42,6 +42,12 @@ body {
 .signIn {
     margin-top: 25px;
 }
+footer {
+    background-image: url('https://realtorapp.s3.us-east-2.amazonaws.com/ManOfSteel.jpg');
+    height: 10vh;
+    width: 100%;
+    bottom: 0px;
+}
 
 
 @media only screen 
@@ -92,6 +98,12 @@ display: none;
 height: 8vh;
 }
 .signIn{
-margin-top: 35px;
+margin-top: 25px;
+}
+.login-Btn {
+    height: 8vh;
+}
+.title {
+    font-size: x-large;
 }
 }

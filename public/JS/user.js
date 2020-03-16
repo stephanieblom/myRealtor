@@ -43,18 +43,16 @@ let emailAddress;
         <div class="col-lg-4 col-md-6 col-12" >
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
             <div class="col p-4 d-flex flex-column position-static">
-                <h3 class="mb-0">${firstName}</h3>
+                <h3 class="mb-0"></i>${listing.price}</h3>
                 <div class="mb-1 text-muted">Listed: Nov 12</div>
-                <a style="text-align:left;"><i class="fa fa-bed"></i>: ${listing.beds}</a>
-                <a style="text-align:left;"><i class="fa fa-bath"></i>: ${listing.baths}</a>
-                <a style="text-align:left;"><i class="fa fa-map-marker"></i>: ${listing.address}</a>
-                <a style="text-align:left;"><i class="fa fa-usd"></i>: ${listing.price}</a>
-                <br>
+                <hr>
+                <a ><i class="fa fa-bed"></i>: ${listing.beds}</a>
+                <a ><i class="fa fa-bath"></i>: ${listing.baths}</a>
+                <a ><i class="fa fa-map-marker"></i>: ${listing.address}</a>
                 <i style="display: none;" id="${listing._id}" onclick="editDescription('${listing._id}', '${description}')" class="fa fa-sm fa-edit"></i>
-                <p class="card-text mb-auto" id="description${listing._id}">${description}</p>
+                <p class="card-text mb-auto" id="description${listing._id}" style="height: 50px;>${description}</p>
                 <input type="text" class="form-control" id="editDescription${listing._id}" style="display: none"></input>
                 <br>
-                <a style="text-align:left;" href="#" class="stretched-link">Learn More</a>
             </div>
             <div class="col-12">
                 <img src="${listing.photo}" class="thumbnail-size img-fluid" preserveAspectRatio="xMidYMid slice" />
@@ -197,8 +195,7 @@ $(document).ready( async function(){
                 return userName; }
 
                 if ( userNameURL === userNameLocalStorage ){
-                    console.log( 'This is the user profile page' );
-                    $('.profile-content').prepend('<i class="edit-Btn fa fa-2x fa-edit" onclick="editPage()">');
+                    // $('#editInfoIcon').removeAttr('style','display : none');
                     $('.fa-edit').removeAttr('style','display : none');
                 } 
 
