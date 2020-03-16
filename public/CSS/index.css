@@ -50,7 +50,7 @@ label{
 #mysidebar {
     height: 100%;
     width: 0;
-    position: fixed;
+    position: absolute;
     z-index: 1;
     top: 0;
     left: 0;
@@ -112,4 +112,14 @@ a:hover {
 
   .card{
     animation: fade 0.7s;
+  }
+#searchbtn2{
+   margin-left: auto;
+   margin-right: auto;
+  }
+  .addToList{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    overflow: hidden; 
   }
