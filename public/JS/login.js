@@ -27,7 +27,7 @@ async function addUser( event ) {
         toastr.error( 'Passwords Do Not Match :(' )
     } else {
         console.log( 'new user: ', newUser );
-        const sendInfo = await $.post( '/api/createUser', newUser );
+        const sendInfo = $.post( '/api/createUser', newUser );
         toastr.success( `User Created: ${newUser.firstName} ${newUser.lastName}` );
         clearValues();
     }
