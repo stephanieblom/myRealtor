@@ -2,7 +2,6 @@ async function addUser( event ) {
             
     event.preventDefault();
 
-
     const inputFirstName = $('#inputFirstName').val();
     const inputLastName= $('#inputLastName').val();
     const inputMobile = $('#inputMobile').val();
@@ -11,7 +10,6 @@ async function addUser( event ) {
     const inputEmail = $('#inputEmail').val();
     const inputPassword = $('#inputPassword').val();
     const confirmPassword = $('#inputPassword2').val();
-
 
     const newUser = {
         firstName: inputFirstName,
@@ -32,7 +30,9 @@ async function addUser( event ) {
         clearValues();
     }
 };
+
 async function signIn() {
+
     const signInEmail = $('#signInEmail').val();
     const signInPassword = $('#signInPassword').val();
 
@@ -41,8 +41,10 @@ async function signIn() {
         password: signInPassword
     }
     console.log( 'User Credentials: ', userCredentials );
+
     const checkCredentials = await $.post( '/api/checkCredentials', userCredentials );
     console.log( 'check credentials result:', checkCredentials );
+
     if ( !checkCredentials ) {
         toastr.error( 'USER DOES NOT EXIST ')
     } else if ( signInPassword !== checkCredentials.userPassword ){
@@ -54,14 +56,14 @@ async function signIn() {
         location.href = `/user.html#${userName}`
         toastr.success( 'It worked :) ');
         localStorage.setItem('checkCredentials',JSON.stringify(checkCredentials))
-       // location.href = `/user.html#`;
-     };
-
+    };
 }
+
 $('#signUp-Btn').on('click', addUser );
 $('.login-Btn').on('click', signIn );
 
 function createUserName ( email ){
+
     const user = email;
     const iend = user.indexOf("@");
     const userName = user.substring(0 , iend);
@@ -70,6 +72,7 @@ function createUserName ( email ){
 }
 
 function clearValues() {
+    
     $('#signInEmail').val('');
     $('#signInPassword').val('');
     $('#inputFirstName').val('');

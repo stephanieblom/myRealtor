@@ -12,15 +12,16 @@ app.use(express.static('public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+//ENDPOINT TO GET USER DATA
 app.get( `/api/user/:userName`, async function( req, res ){
 
     const myUser = await orm.getUserData( req.params.userName );
-    // console.log( 'myUser:', myUser );
-
     res.send( myUser );
 } );
 
+//
 app.post( '/api/email', function( req, res ){
+
     console.log( `<< form data received: `, req.body );
     console.log(`sending message to ${req.body.to}`)
     console.log(`process.env: ${process.env}`)
@@ -34,53 +35,69 @@ app.post( '/api/email', function( req, res ){
     res.send( { message: `sent email to: ${req.body.to}` } );
 })
 
+//ENDPOINT TO CREATE USER
 app.post( '/api/createUser',  async function ( req, res ){
+
     const newUser = req.body;
-    console.log('Received New User: ', newUser.firstName )
+        console.log('Received New User: ', newUser.firstName )
+
     const mongoResonse = await orm.saveUser( req.body );
-    console.log( mongoResonse );
+        console.log( mongoResonse );
+
     res.send ( {message: 'user received! thx babe'})
 });
 
+//ENDPOINT TO UPDATE USER INFO
 app.post( '/api/updateUser', async function ( req, res ){
+
     const userInfo = req.body;
-    console.log('Received user info: ', userInfo.firstName )
+        console.log('Received user info: ', userInfo.firstName );
+
     const mongoResonse = await orm.updateUser( req.body );
-    console.log( mongoResonse );
+        console.log( mongoResonse );
+
     res.send ( {message: 'user info received! thx babe'})
 });
 
+//ENPOINT TO UPDATE LISTING DESCRIPTION ON USER PROFILE
 app.post( '/api/listDescription', async function ( req, res ){
-    console.log('Receving list desctiption in server..', req.body);
+
+        console.log('Receving list desctiption in server..', req.body);
     const mongoResonse = await orm.updateListing( req.body );
-    console.log( 'sent list...');
+        console.log( 'sent list...');
+
     res.send();
 })
 
+//ENDPOINT TO CHECK CREDENTIALS FOR USER TO SIGN IN
 app.post( '/api/checkCredentials', async function ( req, res ) {
+
     const email = req.body.email;
     const pass = req.body.password;
-    console.log(`receiving sign in credentials: email- ${email}, password- ${pass}`);
+        console.log(`receiving sign in credentials: email- ${email}, password- ${pass}`);
+
     const mongoResponse = await orm.checkUserCredentials ( email, pass );
-    console.log( 'response: ', mongoResponse );
+        console.log( 'response: ', mongoResponse );
 
     res.send(mongoResponse);
 });
 
+//ENDPOINT TO UPDATE LISTINGS IN USER COLLECTION
 app.post( '/api/updateUserList', async function ( req, res ) {
     console.log(`object is`,req.body)
 
     const mongoResponse = await orm.updateUserListingArray(req.body);
-     console.log( 'response: ', mongoResponse );
+        console.log( 'response: ', mongoResponse );
      
     res.send( mongoResponse );
 });
 
-
+// ENDPOINT TO ADD NEW LISTING TO DATABASE
 app.post( '/api/createList', async function ( req, res ){
-    console.log(req.body);
+        console.log(req.body);
+
     const mongoResponse = await orm.saveList( req.body );
-    console.log('saving the list', mongoResponse );
+        console.log('saving the list', mongoResponse );
 
     res.send (mongoResponse)
 });

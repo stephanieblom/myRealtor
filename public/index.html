@@ -20,6 +20,7 @@
 </head>
 
 <body>
+    <!-- For nav bar -->
     <header id="main">
         <nav class="navbar navbar-expand-sm  navbar-light">
             <h2>MyREALTOR</h2>
@@ -41,15 +42,15 @@
                     <li class="nav-item">
                         <a class="nav-link" id="login-Btn" href="login.html" style="color: white;">Login</a>
                     </li>
-                    
                 </ul>
                 <button class="btn btn-outline-light" id='try-Btn' onclick="window.location.href='/login.html'">Try For Free</button>
             </div>
         </nav>
     </header>
-    <div class="collapse" id="mySidebar">
-    </div>
 
+    <div class="collapse" id="mySidebar"></div>
+
+    <!-- html of rabout is and a beautifully composed lorem ipsum -->
     <div class="container pt-5">
         <h3 style='color: black;text-align: center;'>About us</h3>
         <p style="color: black;"> Welcome to MyREALTOR! We are here to provide you with a seamless connection between you and your realtor. We will provide you support with all of your realestate needs for buying and renting homes across North America. You can search for specific real estate agents or search for listings based on your desired location.</p>
@@ -74,15 +75,15 @@
                         style="color: black;">Lists for sales</button>
                 </div>
             </div>
+            <!-- Sample of what listings will look like -->
             <div class="col-md-6" style="color: black;">
                 <img class="img-fluid"
                     src="https://cdn.torontolife.com/wp-content/uploads/2018/09/yannick-bisson-house-for-sale-1-803x603.jpg"
                     style='width:100%;height:auto;' alt="">
-
-
             </div>
         </div>
     </div>
+    <!-- Form for user to input search details to find RENTALS -->
     <div class="collapse" id="formContainer">
         <div class="container">
             <form style="color: black;">
@@ -90,15 +91,15 @@
                     <h2 style="text-align: center;color: black;">Fill the Form For Information</h2>
                 </div>
                 <div class="form-row">
-                        <div class="form-group col-md-3">
-                                <input type="text" class="form-control" id="inputCity" placeholder="Enter City ">
-                            </div>
-                            <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" id="inputState" placeholder="Enter State-Code ">
-                            </div>
-                            <div class="form-group col-md-3">
-                                    <input type="text" class="form-control" id="inputCountry" placeholder="Enter Country ">
-                            </div>
+                    <div class="form-group col-md-3">
+                        <input type="text" class="form-control" id="inputCity" placeholder="Enter City ">
+                    </div>
+                    <div class="form-group col-md-3">
+                            <input type="text" class="form-control" id="inputState" placeholder="Enter State-Code ">
+                    </div>
+                    <div class="form-group col-md-3">
+                            <input type="text" class="form-control" id="inputCountry" placeholder="Enter Country ">
+                    </div>
                     <div class="form-group col-md-3">
                         <input type="text" class="form-control" id="inputZip" placeholder="Postal-Code">
                     </div>
@@ -135,7 +136,7 @@
             </form>
         </div>
     </div>
-
+    <!-- Form for user to input search details to find listings for SALE -->
     <div class="collapse" id="formContainer2">
         <div class="container">
             <form style="color: black;">
@@ -189,6 +190,7 @@
             </form>
         </div>
     </div>
+    <!-- FEATURED PAGE -->
     <div class="card" style="width: 78vw;text-align: center;margin-left: auto; margin-right: auto;margin-bottom: 10px;" id="displaySample">
         <div class="card-header" style="color: black;">Latest Listing of Rentals & Sales</div>
         <div class="card-body">
@@ -203,6 +205,7 @@
             </div>
         </div>
     </div>
+    <!-- FOOTER -->
     <div class="card text-center" id="footer">
         <div class="card-body">
             <h5 class="card-title" style="color: black;">Socila Media</h5>
@@ -221,18 +224,19 @@
     </div>
     <script type="text/javascript" src="./JS/index.js"></script>
     <script
-  src="https://code.jquery.com/jquery-3.4.1.js"
-  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
-  crossorigin="anonymous"></script>
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script>
-
+        crossorigin="anonymous">
     </script>
+
 </body>
 
 </html>
