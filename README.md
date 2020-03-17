@@ -17,7 +17,7 @@ and open local host.
 
 
 ## Group Members
-[Koustub Manchiraju](https://github.com/koustub)
-[Jason Kitamura](https://github.com/Jason-Kitamura)
+* [Koustub Manchiraju](https://github.com/koustub)
+* [Jason Kitamura](https://github.com/Jason-Kitamura)
 
 
