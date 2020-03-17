@@ -16,8 +16,8 @@ Once installations are complete... run the file using node (node server.js)
 and open local host.
 
 
-## Group 
-![Koustub Manchiraju](https://github.com/koustub)
-![Jason Kitamura](https://github.com/Jason-Kitamura)
+## Group Members
+[Koustub Manchiraju](https://github.com/koustub)
+[Jason Kitamura](https://github.com/Jason-Kitamura)
 
 
